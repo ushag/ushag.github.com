@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Usha Guduri</title>
+  <title> - Usha Guduri</title>
   <meta name="author" content="Usha Guduri">
 
   
-  <meta name="description" content="Aloha! A tech lead and an evangelist for new technologies, but prefer to call myself just that: a Software Engineer at the end of the day, coming up &hellip;">
+  <meta name="description" content="Feb 9th, 2013 ## On Going BostonVolunteer.org
+A electronic wallet for the digital currency bitcoin. Went through Y Combinator’s Summer ‘12 batch and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ushag.bitbucket.org/">
+  <link rel="canonical" href="http://ushag.bitbucket.org/pro-bono/index.markdown.thumbnails">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/ug.css" rel="stylesheet" type="text/css">
@@ -80,13 +81,60 @@
       <div>
 <article role="article">
   
-  <h3>Aloha!</h3>
+  <header>
+    <h1 class="entry-title"></h1>
+    <p class="meta">
 
-<p>A tech lead and an evangelist for new technologies, but prefer to call myself just that: a <em>Software Engineer</em> at the end of the day, coming up with solutions for highly scalable and performance intensive complex systems :-)</p>
 
-<p>Of course, you can also find me turning a page on a real hand-held book or moving a foot on the traditional Indian dance floor or camping at a National Park in the summer or cursing the Boston weather in winter or preparing myself for that next adventure or in general trying to grope with the mysteries of the universe, every moment I can spare taking off the working cap!</p>
 
-<p><img class="center" src="/images/me.png" width="500" height="400"></p>
+
+
+
+
+
+  
+
+
+<time datetime="2013-02-09T14:18:00-05:00" pubdate data-updated="true">Feb 9<span>th</span>, 2013</time></p>
+  </header>
+  
+  ## On Going
+
+<ul class="thumbnails">
+<li class="span4">
+<div class="thumbnail">
+<a href="http://bostonvolunteer.org" _target="blank"><img src="/pro-bono/bv.png" width="200" height="200" title="BostonVolunteer.org" ></a>
+<div class="caption">
+<h4>BostonVolunteer.org</h4>
+<p>A electronic wallet for the digital currency bitcoin.  Went through Y Combinator’s Summer ‘12 batch and raised a 600k seed round.</p>
+</div>
+</div>
+</li>
+<li class="span4">
+<div class="thumbnail">
+<a href="http://trivenidance.org" _target="blank"><img src="/pro-bono/triveni.png" width="200" height="200" title="'Triveni School Of Dance'" ></a>
+<div class="caption">
+<h4>Triveni School Of Dance</h4>
+<p>A electronic wallet for the digital currency bitcoin.  Went through Y Combinator’s Summer ‘12 batch and raised a 600k seed round.</p>
+</div>
+</div>
+</li>
+</ul>
+
+## Past
+
+<ul class="thumbnails">
+<li class="span4">
+<div class="thumbnail">
+<a href="https://coinbase.com/" target="_blank"><img src="/images/projects/coinbase.png" alt="Coinbase"></a>
+<div class="caption">
+<span class="label label-info pull-right">Founder</span>
+<h4>Coinbase.com</h4>
+<p>A electronic wallet for the digital currency bitcoin.  Went through Y Combinator’s Summer ‘12 batch and raised a 600k seed round.</p>
+</div>
+</div>
+</li>
+</ul>
 
   
 </article>

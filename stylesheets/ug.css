@@ -1,0 +1,28 @@
+.left {
+float: left;
+}
+
+.right{
+float: right;
+}
+
+.space-30 {
+width: 30%;
+}
+
+.space-60 {
+width: 60%;
+}
+
+.clear {
+clear: both;
+}
+
+.clearfix:after {
+visibility: hidden;
+display: block;
+font-size: 0;
+content: " ";
+clear: both;
+height: 0;
+}
