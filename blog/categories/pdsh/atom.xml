@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: pdsh | Usha Guduri]]></title>
+  <link href="http://ushaguduri.com/blog/categories/pdsh/atom.xml" rel="self"/>
+  <link href="http://ushaguduri.com/"/>
+  <updated>2013-02-15T17:33:00-05:00</updated>
+  <id>http://ushaguduri.com/</id>
+  <author>
+    <name><![CDATA[Usha Guduri]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[PDSH - Parallel Distributed SHell]]></title>
+    <link href="http://ushaguduri.com/blog/2012/10/05/pdsh-parallel-distributed-shell/"/>
+    <updated>2012-10-05T14:35:00-04:00</updated>
+    <id>http://ushaguduri.com/blog/2012/10/05/pdsh-parallel-distributed-shell</id>
+    <content type="html"><![CDATA[<p>Unless your application is a serving such a small traffic or is in the Beta stage, you are probably working with a load-balanced set of servers - web/application/database - you name it. And when there is an issue, the task of looking at the logs on each of the servers is a nightmare!</p>
+
+<p>One option is to run a remote command via ssh like:
+<code>
+ssh user@host “date”
+</code></p>
+
+<p>But identifiying the server where you can find more information means running the above N times changing the host each time. For more involved tasks, it gets even more difficult. Oh and what if you accidentally missed a server and claimed that “something did not happen”! You can wrap the command in a loop and come up with a shell script (choose your own language), of course.</p>
+
+<p>But <a href="http://linux.die.net/man/1/pdsh">pdsh</a> simplifies all that. Its pretty much like your own wrapper, but only with more features - especially running in parallel. And fear not, its not learning another language. Even a simple run without too many options that it provides is enough to free up a ton of your time.
+<code>
+pdsh -R ssh -w user@host[1-8].full.name “date”
+</code></p>
+
+<p>Looks so familiar, ain’t it? And all it does is parallel’ly run the date command remotely on host1 through host8.</p>
+
+<p>Whoa! Thats how many keystrokes and minutes saved of your life?</p>
+
+<p>Try it for yourself: <a href="https://code.google.com/p/pdsh/downloads/list">Google Code</a></p>
+
+<p>This is just a flyer ad for pdsh. More details will follow as I keep using it.</p>
+]]></content>
+  </entry>
+  
+</feed>

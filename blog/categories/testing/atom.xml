@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: testing | Usha Guduri]]></title>
+  <link href="http://ushaguduri.com/blog/categories/testing/atom.xml" rel="self"/>
+  <link href="http://ushaguduri.com/"/>
+  <updated>2013-02-15T17:33:00-05:00</updated>
+  <id>http://ushaguduri.com/</id>
+  <author>
+    <name><![CDATA[Usha Guduri]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Advanced Watir Use]]></title>
+    <link href="http://ushaguduri.com/blog/2012/02/29/advanced-watir-use/"/>
+    <updated>2012-02-29T16:17:00-05:00</updated>
+    <id>http://ushaguduri.com/blog/2012/02/29/advanced-watir-use</id>
+    <content type="html"><![CDATA[<p>...if you want to call hacking Watir to work with certain “advanced” UI elements that!</p>
+
+<p><strong>Element in the works:</strong> jQuery UI's Slider</p>
+
+<p>There’s nothing straightforward in Watir to change the slider and trigger the events as if the user interacted with the slider. In a normal slider implementation, that would either be the ‘change’ or ‘stop’ events on the slider. So how do you do that? Use the <strong>execute_script</strong> to directly do what you need via javascript.
+<code>javascript
+$slider = $(“#myslider”);
+$slider.slider(‘option’, ‘values’, [min, max]); //automatically triggers the ‘change’ event
+$slider.call($slider, stop, event, ui)
+</code></p>
+
+<p>event and ui are objects you can self-create and send to the caller since your call handler signature would’ve been
+<code>javascript
+stop: function(event, ui) {
+...
+}
+</code></p>
+
+<p>Now that you know the js, you can simply execute it on the watir’s ‘browser’ instance</p>
+
+<p><strong>Solution:</strong>
+<code>ruby
+browser.execute_script “&lt;all the above js&gt;”
+</code></p>
+
+<p><strong>Lesson:</strong> Watir can be hacked to work even with complex and dynamic web pages ;-)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Finding Watir Elements with XPATH]]></title>
+    <link href="http://ushaguduri.com/blog/2012/02/24/finding-watir-elements-with-xpath/"/>
+    <updated>2012-02-24T16:10:00-05:00</updated>
+    <id>http://ushaguduri.com/blog/2012/02/24/finding-watir-elements-with-xpath</id>
+    <content type="html"><![CDATA[<p>We recently got into automated ui testing with watir.</p>
+
+<p>First impression: Awesome!</p>
+
+<p>Then we added rspec and rake when the nightmares began - more about that later perhaps.</p>
+
+<p>For a simple page with a few DOM elements, its pretty straightforward. Enter a highly dynamic, complex rendering logic and the DOM access breaks down. Something even as intellectually simple as:</p>
+
+<p>```ruby</p>
+
+<pre><code>browser.div(:id=&gt;”myid”).div(:class=&gt;”myclass”)
+</code></pre>
+
+<p>```</p>
+
+<p>actually coughed and puffed with the watir-webdriver &lt;0.5 versions, specifically on Firefox. But of course, there is a workaround - XPATH! We are ‘Engineers’ afterall!</p>
+
+<p>```ruby</p>
+
+<pre><code>browser.element(:xpath =&gt; “//div[id=myid]/div[class=myclass]”)
+</code></pre>
+
+<p>```</p>
+
+<p>The problem with XPath though, is that its absolute and highly specific. If you so much as change the class from</p>
+
+<p>```html</p>
+
+<div class=”myclass myclass2”>
+```
+
+Xpath breaks and so do your tests.
+
+**Solution:** Update to watir-webdriver 0.5.2
+
+**Lesson:** Be wary of anything < 1.0 
+
+]]></content>
+  </entry>
+  
+</feed>

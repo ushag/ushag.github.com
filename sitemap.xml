@@ -1,31 +1,89 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://ushag.bitbucket.org/blog/archives/</loc>
-        <lastmod>2013-02-09T17:25:42-05:00</lastmod>
+        <loc>http://ushaguduri.com/blog/2012/02/24/finding-watir-elements-with-xpath/</loc>
+        <lastmod>2013-02-15T17:29:13-05:00</lastmod>
     </url>
     <url>
-        <loc>http://ushag.bitbucket.org/blog/</loc>
-        <lastmod>2013-02-09T17:25:42-05:00</lastmod>
+        <loc>http://ushaguduri.com/blog/2012/02/29/advanced-watir-use/</loc>
+        <lastmod>2013-02-15T17:29:33-05:00</lastmod>
     </url>
     <url>
-        <loc>http://ushag.bitbucket.org/</loc>
+        <loc>http://ushaguduri.com/blog/2012/03/10/dates-and-times-front-and-back/</loc>
+        <lastmod>2013-02-15T17:28:50-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://ushaguduri.com/blog/2012/03/10/database-migrations-continue-on-expected-errors/
+        </loc>
+        <lastmod>2013-02-15T17:28:33-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://ushaguduri.com/blog/2012/03/12/mysql-effects-on-views-from-changes-to-table-structure/
+        </loc>
+        <lastmod>2013-02-15T17:28:37-05:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            http://ushaguduri.com/blog/2012/03/13/svn-plus-ssh-network-connection-closed-unexpectedly/
+        </loc>
+        <lastmod>2013-02-15T17:28:54-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ushaguduri.com/blog/2012/03/14/svn-delete-an-oops-moment/</loc>
+        <lastmod>2013-02-15T17:28:43-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ushaguduri.com/blog/2012/10/01/domain-registration-vs-web-hosting/</loc>
+        <lastmod>2013-02-15T17:28:05-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ushaguduri.com/blog/2012/10/02/ssh-access-to-the-hosting-server/</loc>
+        <lastmod>2013-02-15T17:28:13-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ushaguduri.com/blog/2012/10/03/cname-vs-a-record/</loc>
+        <lastmod>2013-02-15T17:28:18-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ushaguduri.com/blog/2012/10/05/pdsh-parallel-distributed-shell/</loc>
+        <lastmod>2013-02-15T17:28:24-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ushaguduri.com/blog/2012/11/12/getting-into-the-git-land-via-svn/</loc>
+        <lastmod>2013-02-15T17:28:01-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ushaguduri.com/blog/2012/11/16/mac-ui-tweaks/</loc>
+        <lastmod>2013-02-15T17:27:53-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ushaguduri.com/blog/archives/</loc>
+        <lastmod>2013-02-15T17:29:33-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ushaguduri.com/blog/</loc>
+        <lastmod>2013-02-15T17:29:33-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://ushaguduri.com/</loc>
         <lastmod>2013-02-12T13:18:15-05:00</lastmod>
     </url>
     <url>
-        <loc>http://ushag.bitbucket.org/index.markdown.div</loc>
+        <loc>http://ushaguduri.com/index.markdown.div</loc>
         <lastmod>2013-02-09T18:41:58-05:00</lastmod>
     </url>
     <url>
-        <loc>http://ushag.bitbucket.org/pro-bono/</loc>
+        <loc>http://ushaguduri.com/pro-bono/</loc>
         <lastmod>2013-02-09T18:27:26-05:00</lastmod>
     </url>
     <url>
-        <loc>http://ushag.bitbucket.org/pro-bono/index.markdown.thumbnails</loc>
+        <loc>http://ushaguduri.com/pro-bono/index.markdown.thumbnails</loc>
         <lastmod>2013-02-09T17:25:42-05:00</lastmod>
     </url>
     <url>
-        <loc>http://ushag.bitbucket.org/robots.txt</loc>
+        <loc>http://ushaguduri.com/robots.txt</loc>
         <lastmod>2013-02-09T17:25:42-05:00</lastmod>
     </url>
 </urlset>

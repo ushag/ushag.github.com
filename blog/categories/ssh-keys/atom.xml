@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ssh-keys | Usha Guduri]]></title>
+  <link href="http://ushaguduri.com/blog/categories/ssh-keys/atom.xml" rel="self"/>
+  <link href="http://ushaguduri.com/"/>
+  <updated>2013-02-15T17:33:00-05:00</updated>
+  <id>http://ushaguduri.com/</id>
+  <author>
+    <name><![CDATA[Usha Guduri]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SSH access to the Hosting server]]></title>
+    <link href="http://ushaguduri.com/blog/2012/10/02/ssh-access-to-the-hosting-server/"/>
+    <updated>2012-10-02T14:25:00-04:00</updated>
+    <id>http://ushaguduri.com/blog/2012/10/02/ssh-access-to-the-hosting-server</id>
+    <content type="html"><![CDATA[<p>This section depends more on what style you are comfortable with: point-and-click or the get-dirty-with-the-command-line. I belong to the 2nd class and feel so lost without access to the bare bone shell (which I immediately customize with aliases/shell functions/shortcuts etc). This can be a discussion in its own right.</p>
+
+<p>So anyway, once you have acquired hosting space, the seller gives you an IP address of a physical machine where you can ‘setup your html files’. Depending on the seller(HostGator), you may have to ‘Enable SSH Access’ to open the ssh port.</p>
+
+<p>Then you can type
+<code>
+ssh -p 1234 username@123.456.78.9
+</code></p>
+
+<p>from the shell and voila! you are at the all too familiar bash prompt on the hosting server!</p>
+
+<p>But notice that you had to enter your crazy-incomprehensible password,that you most likely copy-paste’d from the email. If you plan on spending any significant time on this box, you will get in and out of it and will be forced to enter the password each time - SSH keys coming to the rescue! I generally use RSA for my keys from my own desktop/laptop.</p>
+
+<p><code>
+ssh-keygen -t rsa
+</code></p>
+
+<p>will generate the necessary public/private keys in your .ssh directory.</p>
+
+<p>You then create a .ssh directory on the new machine and add the id_rsa.pub key to a new authorized_keys file on the server. At the end, here is how the file setup looks like —> note the permissions: 700 for the .ssh directory and 644 for the authorized_keys file
+<code>
+drwx———  2 username groupname 4096 Sep 30 17:26 ./
+-rw-r—r—  1 username groupname  752 Sep 30 17:26 authorized_keys
+</code></p>
+
+<p>And the next time you ssh to the host, you dont have to go searching for the password in your email anymore!</p>
+]]></content>
+  </entry>
+  
+</feed>

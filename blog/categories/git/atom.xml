@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: git | Usha Guduri]]></title>
+  <link href="http://ushaguduri.com/blog/categories/git/atom.xml" rel="self"/>
+  <link href="http://ushaguduri.com/"/>
+  <updated>2013-02-15T17:33:00-05:00</updated>
+  <id>http://ushaguduri.com/</id>
+  <author>
+    <name><![CDATA[Usha Guduri]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Getting into the Git land-via SVN]]></title>
+    <link href="http://ushaguduri.com/blog/2012/11/12/getting-into-the-git-land-via-svn/"/>
+    <updated>2012-11-12T14:15:00-05:00</updated>
+    <id>http://ushaguduri.com/blog/2012/11/12/getting-into-the-git-land-via-svn</id>
+    <content type="html"><![CDATA[<p>All the cool kids use git these days but shifting gears for your way-way-back-then-started repo into git is an intimidating task, let alone scaring the entire team while everyone is busy getting their stuff done.</p>
+
+<p>But you still want to learn git? there is no better way to that than using it every single day-isnt that how you became a pro at svn in the first place? so here comes git-svn to the rescue.</p>
+
+<p>Its a real simple tool that goes bi-directional between git and svn and is so well done that sometimes its just prepending git in front of svn commands!</p>
+
+<p>To start a git repo from svn is as easy as
+<code>
+git svn clone -s http://example.com/subversion_repo local_dir
+</code></p>
+
+<p>If your svn repo is not using the standard layout of trunk/branches/tags, you can specify what they are using -T , -b , -t like so
+<code>
+git svn clone -s http://example.com/my_subversion_repo -T trunk -b my-branch-tree -t my-tag-tree local_dir
+</code></p>
+
+<p>Before you start making changes though, you might want to set up the annoying ‘ignores’. Just copy over svn ignore config into git with:
+<code>
+git svn show-ignore » .git/info/exclude
+</code></p>
+
+<p>Ensure your checkout is pointing to the right repo
+<code>
+git svn info
+</code>
+And now you can start exploring and committing to the local git repo using git commands like
+<code>
+git add my-file
+git commit my-file
+</code></p>
+
+<p>Then comes the slight difference between real git repos and git-svn repos. you most likely heard about git pushing changes. with git-svn, you’d
+<code>
+git svn dcommit
+</code>
+to push changes to the svn repo. and there you go-you made your first commit to svn via git-irony!!</p>
+
+<p>More to come on .gitconfig, branches, cherry-pick’ing etc. but let me suggest installing bash-completion right away so you can just tab-complete the commands instead of typing out in entirety each time-all about saving those precious strokes that so risk every software engineer to carpal tunnel!</p>
+]]></content>
+  </entry>
+  
+</feed>

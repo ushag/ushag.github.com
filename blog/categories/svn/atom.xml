@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: svn | Usha Guduri]]></title>
+  <link href="http://ushaguduri.com/blog/categories/svn/atom.xml" rel="self"/>
+  <link href="http://ushaguduri.com/"/>
+  <updated>2013-02-15T17:33:00-05:00</updated>
+  <id>http://ushaguduri.com/</id>
+  <author>
+    <name><![CDATA[Usha Guduri]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Getting into the Git land-via SVN]]></title>
+    <link href="http://ushaguduri.com/blog/2012/11/12/getting-into-the-git-land-via-svn/"/>
+    <updated>2012-11-12T14:15:00-05:00</updated>
+    <id>http://ushaguduri.com/blog/2012/11/12/getting-into-the-git-land-via-svn</id>
+    <content type="html"><![CDATA[<p>All the cool kids use git these days but shifting gears for your way-way-back-then-started repo into git is an intimidating task, let alone scaring the entire team while everyone is busy getting their stuff done.</p>
+
+<p>But you still want to learn git? there is no better way to that than using it every single day-isnt that how you became a pro at svn in the first place? so here comes git-svn to the rescue.</p>
+
+<p>Its a real simple tool that goes bi-directional between git and svn and is so well done that sometimes its just prepending git in front of svn commands!</p>
+
+<p>To start a git repo from svn is as easy as
+<code>
+git svn clone -s http://example.com/subversion_repo local_dir
+</code></p>
+
+<p>If your svn repo is not using the standard layout of trunk/branches/tags, you can specify what they are using -T , -b , -t like so
+<code>
+git svn clone -s http://example.com/my_subversion_repo -T trunk -b my-branch-tree -t my-tag-tree local_dir
+</code></p>
+
+<p>Before you start making changes though, you might want to set up the annoying ‘ignores’. Just copy over svn ignore config into git with:
+<code>
+git svn show-ignore » .git/info/exclude
+</code></p>
+
+<p>Ensure your checkout is pointing to the right repo
+<code>
+git svn info
+</code>
+And now you can start exploring and committing to the local git repo using git commands like
+<code>
+git add my-file
+git commit my-file
+</code></p>
+
+<p>Then comes the slight difference between real git repos and git-svn repos. you most likely heard about git pushing changes. with git-svn, you’d
+<code>
+git svn dcommit
+</code>
+to push changes to the svn repo. and there you go-you made your first commit to svn via git-irony!!</p>
+
+<p>More to come on .gitconfig, branches, cherry-pick’ing etc. but let me suggest installing bash-completion right away so you can just tab-complete the commands instead of typing out in entirety each time-all about saving those precious strokes that so risk every software engineer to carpal tunnel!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SVN Delete - an oops moment!]]></title>
+    <link href="http://ushaguduri.com/blog/2012/03/14/svn-delete-an-oops-moment/"/>
+    <updated>2012-03-14T15:48:00-04:00</updated>
+    <id>http://ushaguduri.com/blog/2012/03/14/svn-delete-an-oops-moment</id>
+    <content type="html"><![CDATA[<p>And how many times did you accidentally delete files from svn repo - be it because you were copying and instead moved, typo’d and deleted 1 file instead of another or for whatever reason?!</p>
+
+<p><strong>Easiest to do:</strong> simply copying the file from elsewhere and svn add</p>
+
+<p><strong>Better way to do:</strong> restore the files, including the svn history.</p>
+
+<p>To see which revision deleted the file, foo.file
+<code>
+$ svn log -v
+r100 | me
+D &lt;local_path&gt;/foo.file
+</code></p>
+
+<p>Now copy the file from the previous revision using the repo url, not just the location on the local machine
+```
+$ svn copy -r 99 http://<svn_repo_path>/foo.file@99 &lt;local_path_to_foo.file>/.</p>
+
+<p>$ svn status
+A <local_path>/foo.file</p>
+
+<p>$ svn commit
+```</p>
+
+<p>And now the svn log still shows the entire history without the deletion
+<code>
+$ svn log &lt;local_path&gt;/foo.file
+r101 | me | adding back foo.file
+r99 | me | last known valid change
+</code></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[SVN+SSH: network connection closed unexpectedly]]></title>
+    <link href="http://ushaguduri.com/blog/2012/03/13/svn-plus-ssh-network-connection-closed-unexpectedly/"/>
+    <updated>2012-03-13T15:27:00-04:00</updated>
+    <id>http://ushaguduri.com/blog/2012/03/13/svn-plus-ssh-network-connection-closed-unexpectedly</id>
+    <content type="html"><![CDATA[<p>After a long time, I had to work-from-home today because I hurt my shoulder badly. And something with the firewall and/or VPN settings seems to have changed that I couldn’t access the code base anymore. What more can you ask for WFH ;-)</p>
+
+<p>I spent enough time to figure this out that I thought best to note it here. svn was caughing with:</p>
+
+<pre><code>$ svn ls svn+ssh://myhost/myrepo
+svn: To better debug SSH connection problems, remove the -q option from ‘ssh’ in the [tunnels] section of your Subversion configuration file.
+svn: Network connection closed unexpectedly
+</code></pre>
+
+<p>The configs(~/.ssh/config and /etc/ssh_config) had nothing specific to tunnels anywhere. I could login to <em>myhost</em> just fine and also port forward to it without problems like before, using the long standing aliases - so nothing stood out. Preliminary instinct is to purge the known_hosts file in ~/.ssh/known_hosts and rebuild it in case the host’s address had changed - no luck. You could see what ssh is doing on a connection with ssh -v, but this is svn+ssh, isnt it? a one-liner to the rescue!</p>
+
+<pre><code>$ export SVN_SSH=”ssh -v “
+</code></pre>
+
+<p>and then do retry the svn command to see:</p>
+
+<pre><code>ssh: Could not resolve hostname myhost: nodename nor servname provided, or not known
+</code></pre>
+
+<p>Are you kidding me?! Your stupid error message ran me down a dark alley about tunnels and the problem was actually with the hostname?!</p>
+
+<p><strong>Solution:</strong></p>
+
+<ol>
+<li>As simple as using the FQDN for myhost with each svn command:
+ <code>
+ $ svn ls svn+ssh://fqdn.myhost.com/myrepo
+</code></li>
+<li>The above is cumbersome if you already have aliases set up or are working with new repos. Better yet is to add the actual IP address for the host to your hosts file in /etc/hosts:
+ <code>
+ 123.13.13.1 myhost
+</code></li>
+</ol>
+
+
+<p><strong>Lesson:</strong> Do not trust the error messages at face value until you get more debug info about where/who its coming from!</p>
+]]></content>
+  </entry>
+  
+</feed>

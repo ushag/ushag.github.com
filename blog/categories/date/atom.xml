@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: date | Usha Guduri]]></title>
+  <link href="http://ushaguduri.com/blog/categories/date/atom.xml" rel="self"/>
+  <link href="http://ushaguduri.com/"/>
+  <updated>2013-02-15T17:33:00-05:00</updated>
+  <id>http://ushaguduri.com/</id>
+  <author>
+    <name><![CDATA[Usha Guduri]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dates &amp; Times - Front &amp; Back]]></title>
+    <link href="http://ushaguduri.com/blog/2012/03/10/dates-and-times-front-and-back/"/>
+    <updated>2012-03-10T14:39:00-05:00</updated>
+    <id>http://ushaguduri.com/blog/2012/03/10/dates-and-times-front-and-back</id>
+    <content type="html"><![CDATA[<p>Not that I did not learn anything the past week but that so much has been happening that i failed to make time to write about it!</p>
+
+<p>Now to the mystery behind dates transferred between the front end(client browser) getting changed when coming back from the backend (Java)…</p>
+
+<p>If you think creating Date objects is so simple, behold! there is something called a “timezone” which gets used for generating the Dates - both by Javascript and Java. And it depends on where the machine is located - in some countries it also depends on what part of the year with the stupid and confusing “daylight savings time”.</p>
+
+<p>In Javascript:
+<code>javascript
+new Date();             // Creates a Date with the local time for the browser
+new Date(milliseconds); // Gives a Date with the ms offset from 1/1/1970 UTC
+new Date(text);         // Parses the text from standard formats with the local timezone unless, the timezone is included
+</code></p>
+
+<p>Similarly in Java:
+<code>java
+new Date(milliseconds); // Gives a Date with the ms offset from 1/1/1970 GMT which is affected by daylight savings
+</code></p>
+
+<p>So even if you think passing milliseconds will do the job, you are mistaken because one is using UTC and the other GMT.</p>
+
+<p><strong>Solution:</strong> There are several approaches to solving this problem, that need to be carefully evaluated:</p>
+
+<ol>
+<li>Use UTC times as the protocol to interpret on both ends:
+
+<ul>
+<li>there’s a handy jvm option to ensure that all dates on the java side are interpreted as UTC:
+<code>
+—Duser.timezone=UTC
+</code></li>
+</ul>
+
+
+<p> The problem however is that you will be swamped with UTC dates in the java land(logs, output etc) which is just too cumbersome when debugging a problem.</p>
+
+<ul>
+<li>a better route to this approach: use UTC in code where needed and the rest of the jvm uses the default timezone of the machine, so other processes do not have to change.</li>
+</ul>
+</li>
+<li>Pass timezones in the date string format, so the dates are created correctly</li>
+<li>Pass around the date/month/year as just that - 3 parameters and each end would know how to display/use them.</li>
+</ol>
+
+
+<p><strong>Lesson:</strong> Never send milliseconds since epoch back and forth, since they are interpreted differently based on where the machine is located!</p>
+]]></content>
+  </entry>
+  
+</feed>

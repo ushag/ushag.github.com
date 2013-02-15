@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: dns | Usha Guduri]]></title>
+  <link href="http://ushaguduri.com/blog/categories/dns/atom.xml" rel="self"/>
+  <link href="http://ushaguduri.com/"/>
+  <updated>2013-02-15T17:33:00-05:00</updated>
+  <id>http://ushaguduri.com/</id>
+  <author>
+    <name><![CDATA[Usha Guduri]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[CNAME Vs. A Record]]></title>
+    <link href="http://ushaguduri.com/blog/2012/10/03/cname-vs-a-record/"/>
+    <updated>2012-10-03T14:31:00-04:00</updated>
+    <id>http://ushaguduri.com/blog/2012/10/03/cname-vs-a-record</id>
+    <content type="html"><![CDATA[<p>This is one of a nuances of the Domain Name System (read nuisances as well, if you dont quite understand it and end up mixing the two, running with pants on fire that the website is not working!)</p>
+
+<p>Called the Canonical Name, it is similar to saying Jane Smith and Mrs.Smith are the same person. Almost all the websites have a single default CNAME for www. If you see sites where example.com works but www.example.com fails, it most likely is because of this missing CNAME which looks as simple as:
+<code>
+www.example.com. CNAME example.com.
+</code></p>
+
+<p>And all it is saying is that www.example.com is just another name for example.com, so serve the request as if it went directly to example.com. A-record on the other hand is telling you where to find Jane Smith and Mrs.Smith. In cyberspace, its the address of the machine capable of servicing the requests to example.com and looks equally simple as:
+<code>
+example.com. A 123.45.67.8
+</code></p>
+
+<p>In essence, the minimum DNS entry when you set up a new site should look like:
+<code>
+www.example.com. CNAME example.com.
+example.com. A 123.45.67.8
+</code></p>
+
+<p>The order does not matter as much, but note that each CNAME needs a minimum of 2 lookups to get to the machine to talk to.</p>
+
+<p>So choose wisely, depending on how many hoops are required to finally get to the machine!</p>
+
+<p>For the geek in you, the trailing . in the domain names is for the imaginary root server in the internet hierarchy and is called a FQDN notation (Fully Qualified Domain Name)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Domain Registration Vs. Web Hosting]]></title>
+    <link href="http://ushaguduri.com/blog/2012/10/01/domain-registration-vs-web-hosting/"/>
+    <updated>2012-10-01T14:22:00-04:00</updated>
+    <id>http://ushaguduri.com/blog/2012/10/01/domain-registration-vs-web-hosting</id>
+    <content type="html"><![CDATA[<p>Any substantial group/idea/person has to have a website these days to prove their legitimacy even in the cyberspace.</p>
+
+<p>Now where does that start? With signing up for a easy to recognize name that is associated with the entity at a Domain Registrar - one who makes sure that you own that name and no one else can get that name, like GoDaddy, 1and1, Network Solutions etc. And you pay for their services-anywhere from $10 to $100+ a year. (Prepare to shell out in the thousands if you want a name real bad, that is already taken). At this point, you only have the name to your credit, with a generic message showing at most but no where close to what you want it to actually be like, when you visit the site via a web browser.</p>
+
+<p>The next step is to get some space on a machine connected to the internet-always, so that John in Bangkok or Joe in Paris can see your website anytime of the day. Called Web Hosting, there are so many choices again here - shared, dedicated, colocation - including the big names like Amazon Web Services, Google App Engine, Microsoft Azure etc.</p>
+
+<p>For a simple website, I suggest something like HostGator (best of the lot if you ask me), BlueHost, 1and1, Namecheap and such, where you can get both the above mentioned services in 1 spot with an easy-to-use Control Panel to manage everything.</p>
+
+<p>By the way, for the geek in you,
+<code>
+whois example.com
+</code>
+shows the information you used to sign up with the Domain Registrar and</p>
+
+<p><code>
+nslookup example.com
+dig example.com
+ping example.com
+</code>
+show which IP address(machine) the domain is being served from.</p>
+
+<p>Oh and the next time, I can point anyone, who still ponders why pay twice and are they over-charging etc, straight here..hehe</p>
+]]></content>
+  </entry>
+  
+</feed>

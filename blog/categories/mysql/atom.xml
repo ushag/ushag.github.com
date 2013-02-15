@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mysql | Usha Guduri]]></title>
+  <link href="http://ushaguduri.com/blog/categories/mysql/atom.xml" rel="self"/>
+  <link href="http://ushaguduri.com/"/>
+  <updated>2013-02-15T17:33:00-05:00</updated>
+  <id>http://ushaguduri.com/</id>
+  <author>
+    <name><![CDATA[Usha Guduri]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[MYSQL Effects on Views from Changes to Table Structure]]></title>
+    <link href="http://ushaguduri.com/blog/2012/03/12/mysql-effects-on-views-from-changes-to-table-structure/"/>
+    <updated>2012-03-12T15:23:00-04:00</updated>
+    <id>http://ushaguduri.com/blog/2012/03/12/mysql-effects-on-views-from-changes-to-table-structure</id>
+    <content type="html"><![CDATA[<p>Au contraire, there are <strong>no</strong> effects of changing a table’s structure on a dependent view in MySQL! I’ve heard that other databases like Oracle automatically pick up changes on the table’s structure, but in MySQL the view is frozen upon creation.
+<code>sql
+CREATE VIEW my_view AS SELECT * from my_table;
+ALTER TABLE my_table ADD COLUMN my_new_column &lt;data and constraints&gt;;
+</code>
+If you expect to do
+<code>sql
+SELECT my_new_column FROM my_view;
+</code>
+it sure is going to fail.</p>
+
+<p><strong>Solution:</strong> Either drop the view and recreate it:
+<code>sql
+DROP VIEW my_view;
+CREATE VIEW my_view AS SELECT * from my_table;
+</code>
+or alter the view:
+<code>sql
+ALTER VIEW my_view (&lt;list of all columns&gt;) SELECT * FROM my_table;
+</code>
+<strong>Lesson:</strong> Do not forget about the dependent views when you change a table’s structure!</p>
+]]></content>
+  </entry>
+  
+</feed>
