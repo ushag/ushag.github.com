@@ -4,7 +4,7 @@
   <title><![CDATA[Category: testing | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/testing/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-02-15T17:33:00-05:00</updated>
+  <updated>2013-02-19T18:03:34-05:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -22,8 +22,12 @@
 
 <p><strong>Element in the works:</strong> jQuery UI's Slider</p>
 
-<p>There’s nothing straightforward in Watir to change the slider and trigger the events as if the user interacted with the slider. In a normal slider implementation, that would either be the ‘change’ or ‘stop’ events on the slider. So how do you do that? Use the <strong>execute_script</strong> to directly do what you need via javascript.
-<code>javascript
+<p>There’s nothing straightforward in Watir to change the slider and trigger the events as if the user interacted with the slider. In a normal slider implementation, that would either be the ‘change’ or ‘stop’ events on the slider. So how do you do that? Use the <strong>execute_script</strong> to directly do what you need via javascript.</p>
+
+<!-- more -->
+
+
+<p><code>javascript
 $slider = $(“#myslider”);
 $slider.slider(‘option’, ‘values’, [min, max]); //automatically triggers the ‘change’ event
 $slider.call($slider, stop, event, ui)
@@ -66,6 +70,9 @@ browser.execute_script “&lt;all the above js&gt;”
 </code></pre>
 
 <p>```</p>
+
+<!-- more -->
+
 
 <p>actually coughed and puffed with the watir-webdriver &lt;0.5 versions, specifically on Firefox. But of course, there is a workaround - XPATH! We are ‘Engineers’ afterall!</p>
 

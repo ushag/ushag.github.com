@@ -4,7 +4,7 @@
   <title><![CDATA[Category: git | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/git/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-02-15T17:33:00-05:00</updated>
+  <updated>2013-02-19T18:03:34-05:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -24,8 +24,12 @@
 
 <p>Its a real simple tool that goes bi-directional between git and svn and is so well done that sometimes its just prepending git in front of svn commands!</p>
 
-<p>To start a git repo from svn is as easy as
-<code>
+<p>To start a git repo from svn is as easy as</p>
+
+<!-- more -->
+
+
+<p><code>
 git svn clone -s http://example.com/subversion_repo local_dir
 </code></p>
 

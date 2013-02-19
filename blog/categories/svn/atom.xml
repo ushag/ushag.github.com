@@ -4,7 +4,7 @@
   <title><![CDATA[Category: svn | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/svn/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-02-15T17:33:00-05:00</updated>
+  <updated>2013-02-19T18:03:34-05:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -24,8 +24,12 @@
 
 <p>Its a real simple tool that goes bi-directional between git and svn and is so well done that sometimes its just prepending git in front of svn commands!</p>
 
-<p>To start a git repo from svn is as easy as
-<code>
+<p>To start a git repo from svn is as easy as</p>
+
+<!-- more -->
+
+
+<p><code>
 git svn clone -s http://example.com/subversion_repo local_dir
 </code></p>
 
@@ -70,6 +74,9 @@ to push changes to the svn repo. and there you go-you made your first commit to 
 
 <p><strong>Better way to do:</strong> restore the files, including the svn history.</p>
 
+<!-- more -->
+
+
 <p>To see which revision deleted the file, foo.file
 <code>
 $ svn log -v
@@ -109,6 +116,9 @@ r99 | me | last known valid change
 svn: To better debug SSH connection problems, remove the -q option from ‘ssh’ in the [tunnels] section of your Subversion configuration file.
 svn: Network connection closed unexpectedly
 </code></pre>
+
+<!-- more -->
+
 
 <p>The configs(~/.ssh/config and /etc/ssh_config) had nothing specific to tunnels anywhere. I could login to <em>myhost</em> just fine and also port forward to it without problems like before, using the long standing aliases - so nothing stood out. Preliminary instinct is to purge the known_hosts file in ~/.ssh/known_hosts and rebuild it in case the host’s address had changed - no luck. You could see what ssh is doing on a connection with ssh -v, but this is svn+ssh, isnt it? a one-liner to the rescue!</p>
 

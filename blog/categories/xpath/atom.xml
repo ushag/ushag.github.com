@@ -4,7 +4,7 @@
   <title><![CDATA[Category: xpath | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/xpath/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-02-15T17:33:00-05:00</updated>
+  <updated>2013-02-19T18:03:34-05:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -32,6 +32,9 @@
 </code></pre>
 
 <p>```</p>
+
+<!-- more -->
+
 
 <p>actually coughed and puffed with the watir-webdriver &lt;0.5 versions, specifically on Firefox. But of course, there is a workaround - XPATH! We are ‘Engineers’ afterall!</p>
 

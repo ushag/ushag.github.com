@@ -4,7 +4,7 @@
   <title><![CDATA[Category: pdsh | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/pdsh/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-02-15T17:33:00-05:00</updated>
+  <updated>2013-02-19T18:03:34-05:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -24,6 +24,9 @@
 <code>
 ssh user@host “date”
 </code></p>
+
+<!-- more -->
+
 
 <p>But identifiying the server where you can find more information means running the above N times changing the host each time. For more involved tasks, it gets even more difficult. Oh and what if you accidentally missed a server and claimed that “something did not happen”! You can wrap the command in a loop and come up with a shell script (choose your own language), of course.</p>
 

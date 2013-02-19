@@ -4,7 +4,7 @@
   <title><![CDATA[Usha Guduri]]></title>
   <link href="http://ushaguduri.com/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-02-15T17:33:00-05:00</updated>
+  <updated>2013-02-19T18:03:34-05:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -26,6 +26,9 @@
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>toggle &lt;service&gt; &lt;on/off&gt;</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
 
 
 <p>Disable icon in Applicaiton Switcher: add this to the app’s Info.plist</p>
@@ -80,6 +83,9 @@
 <p>Its a real simple tool that goes bi-directional between git and svn and is so well done that sometimes its just prepending git in front of svn commands!</p>
 
 <p>To start a git repo from svn is as easy as</p>
+
+<!-- more -->
+
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>git svn clone -s http://example.com/subversion_repo local_dir</span></code></pre></td></tr></table></div></figure>
@@ -136,6 +142,9 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>ssh user@host “date”</span></code></pre></td></tr></table></div></figure>
 
 
+<!-- more -->
+
+
 <p>But identifiying the server where you can find more information means running the above N times changing the host each time. For more involved tasks, it gets even more difficult. Oh and what if you accidentally missed a server and claimed that “something did not happen”! You can wrap the command in a loop and come up with a shell script (choose your own language), of course.</p>
 
 <p>But <a href="http://linux.die.net/man/1/pdsh">pdsh</a> simplifies all that. Its pretty much like your own wrapper, but only with more features - especially running in parallel. And fear not, its not learning another language. Even a simple run without too many options that it provides is enough to free up a ton of your time.</p>
@@ -165,6 +174,9 @@
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>www.example.com. CNAME example.com.</span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
 
 
 <p>And all it is saying is that www.example.com is just another name for example.com, so serve the request as if it went directly to example.com. A-record on the other hand is telling you where to find Jane Smith and Mrs.Smith. In cyberspace, its the address of the machine capable of servicing the requests to example.com and looks equally simple as:</p>
@@ -206,6 +218,9 @@
 
 <p>from the shell and voila! you are at the all too familiar bash prompt on the hosting server!</p>
 
+<!-- more -->
+
+
 <p>But notice that you had to enter your crazy-incomprehensible password,that you most likely copy-paste’d from the email. If you plan on spending any significant time on this box, you will get in and out of it and will be forced to enter the password each time - SSH keys coming to the rescue! I generally use RSA for my keys from my own desktop/laptop.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -234,6 +249,9 @@
     <content type="html"><![CDATA[<p>Any substantial group/idea/person has to have a website these days to prove their legitimacy even in the cyberspace.</p>
 
 <p>Now where does that start? With signing up for a easy to recognize name that is associated with the entity at a Domain Registrar - one who makes sure that you own that name and no one else can get that name, like GoDaddy, 1and1, Network Solutions etc. And you pay for their services-anywhere from $10 to $100+ a year. (Prepare to shell out in the thousands if you want a name real bad, that is already taken). At this point, you only have the name to your credit, with a generic message showing at most but no where close to what you want it to actually be like, when you visit the site via a web browser.</p>
+
+<!-- more -->
+
 
 <p>The next step is to get some space on a machine connected to the internet-always, so that John in Bangkok or Joe in Paris can see your website anytime of the day. Called Web Hosting, there are so many choices again here - shared, dedicated, colocation - including the big names like Amazon Web Services, Google App Engine, Microsoft Azure etc.</p>
 
@@ -271,6 +289,9 @@
 <p><strong>Easiest to do:</strong> simply copying the file from elsewhere and svn add</p>
 
 <p><strong>Better way to do:</strong> restore the files, including the svn history.</p>
+
+<!-- more -->
+
 
 <p>To see which revision deleted the file, foo.file</p>
 
@@ -324,6 +345,9 @@ svn: To better debug SSH connection problems, remove the -q option from ‘ssh�
 svn: Network connection closed unexpectedly
 </code></pre>
 
+<!-- more -->
+
+
 <p>The configs(~/.ssh/config and /etc/ssh_config) had nothing specific to tunnels anywhere. I could login to <em>myhost</em> just fine and also port forward to it without problems like before, using the long standing aliases - so nothing stood out. Preliminary instinct is to purge the known_hosts file in ~/.ssh/known_hosts and rebuild it in case the host’s address had changed - no luck. You could see what ssh is doing on a connection with ssh -v, but this is svn+ssh, isnt it? a one-liner to the rescue!</p>
 
 <pre><code>$ export SVN_SSH=”ssh -v “
@@ -368,6 +392,9 @@ svn: Network connection closed unexpectedly
 </span></code></pre></td></tr></table></div></figure>
 
 
+<!-- more -->
+
+
 <p>If you expect to do</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -405,6 +432,9 @@ svn: Network connection closed unexpectedly
     <content type="html"><![CDATA[<p>Ever ran into a situation where the migrations would work just as expected in production, but for some reason, are not applicable to other environments? Could be either because the tables exist in production, but for saving space, the other environments use views on it or because you had to manually add the column to set up the new data, so that the application would not come crashing down.</p>
 
 <p>Your approach would really depend on how the migrations are set up. A simple solution no matter what(if you are using straight SQL), is to surround the actual migration sql in a stored procedure and set up continue handlers only for errors that you are already expecting like so:</p>
+
+<!-- more -->
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -457,6 +487,9 @@ svn: Network connection closed unexpectedly
 <p>Now to the mystery behind dates transferred between the front end(client browser) getting changed when coming back from the backend (Java)…</p>
 
 <p>If you think creating Date objects is so simple, behold! there is something called a “timezone” which gets used for generating the Dates - both by Javascript and Java. And it depends on where the machine is located - in some countries it also depends on what part of the year with the stupid and confusing “daylight savings time”.</p>
+
+<!-- more -->
+
 
 <p>In Javascript:</p>
 
@@ -517,6 +550,9 @@ svn: Network connection closed unexpectedly
 
 <p>There’s nothing straightforward in Watir to change the slider and trigger the events as if the user interacted with the slider. In a normal slider implementation, that would either be the ‘change’ or ‘stop’ events on the slider. So how do you do that? Use the <strong>execute_script</strong> to directly do what you need via javascript.</p>
 
+<!-- more -->
+
+
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -566,6 +602,9 @@ svn: Network connection closed unexpectedly
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">browser</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="ss">:id</span><span class="o">=&gt;</span><span class="err">”</span><span class="n">myid</span><span class="err">”</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="ss">:class</span><span class="o">=&gt;</span><span class="err">”</span><span class="n">myclass</span><span class="err">”</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<!-- more -->
 
 
 <p>actually coughed and puffed with the watir-webdriver &lt;0.5 versions, specifically on Firefox. But of course, there is a workaround - XPATH! We are ‘Engineers’ afterall!</p>

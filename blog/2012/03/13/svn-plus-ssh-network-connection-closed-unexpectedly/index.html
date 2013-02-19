@@ -115,6 +115,9 @@ svn: To better debug SSH connection problems, remove the -q option from ‘ssh�
 svn: Network connection closed unexpectedly
 </code></pre>
 
+<!-- more -->
+
+
 <p>The configs(~/.ssh/config and /etc/ssh_config) had nothing specific to tunnels anywhere. I could login to <em>myhost</em> just fine and also port forward to it without problems like before, using the long standing aliases - so nothing stood out. Preliminary instinct is to purge the known_hosts file in ~/.ssh/known_hosts and rebuild it in case the host’s address had changed - no luck. You could see what ssh is doing on a connection with ssh -v, but this is svn+ssh, isnt it? a one-liner to the rescue!</p>
 
 <pre><code>$ export SVN_SSH=”ssh -v “

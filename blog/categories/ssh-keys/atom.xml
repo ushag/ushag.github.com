@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ssh-keys | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/ssh-keys/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-02-15T17:33:00-05:00</updated>
+  <updated>2013-02-19T18:03:34-05:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -28,6 +28,9 @@ ssh -p 1234 username@123.456.78.9
 </code></p>
 
 <p>from the shell and voila! you are at the all too familiar bash prompt on the hosting server!</p>
+
+<!-- more -->
+
 
 <p>But notice that you had to enter your crazy-incomprehensible password,that you most likely copy-paste’d from the email. If you plan on spending any significant time on this box, you will get in and out of it and will be forced to enter the password each time - SSH keys coming to the rescue! I generally use RSA for my keys from my own desktop/laptop.</p>
 

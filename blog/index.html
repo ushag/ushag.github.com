@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Usha Guduri</title>
+  <title>Blog - Usha Guduri</title>
   <meta name="author" content="Usha Guduri">
 
   
@@ -119,45 +119,12 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>toggle &lt;service&gt; &lt;on/off&gt;</span></code></pre></td></tr></table></div></figure>
 
 
-<p>Disable icon in Applicaiton Switcher: add this to the app’s Info.plist</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>&lt;key&gt;LSUIElement&lt;/key&gt;
-</span><span class='line'>&lt;string&gt;1&lt;/string&gt;</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Switch off(YES)/on(NO) Dashboard</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.dashboard mcx-disabled -boolean YES; killall Dock</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Show(true)/hide(false) desktop icons</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder CreateDesktop -bool false; killall Finder</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Disable(false)/enable(true) character picker on long key press in Lion in favor of key repeat (this was a really annoying change)</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write -g ApplePressAndHoldEnabled -bool false </span></code></pre></td></tr></table></div></figure>
-
-
-<p>Disable(true)/enable(false) Ping sidebar</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.iTunes disablePingSidebar -bool true</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Disable(true)/enable(true) Ping stuff in iTunes</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.iTunes disablePing -bool true</span></code></pre></td></tr></table></div></figure>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/16/mac-ui-tweaks/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -200,47 +167,12 @@
 
 <p>To start a git repo from svn is as easy as</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git svn clone -s http://example.com/subversion_repo local_dir</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If your svn repo is not using the standard layout of trunk/branches/tags, you can specify what they are using -T , -b , -t like so</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git svn clone -s http://example.com/my_subversion_repo -T trunk -b my-branch-tree -t my-tag-tree local_dir</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Before you start making changes though, you might want to set up the annoying ‘ignores’. Just copy over svn ignore config into git with:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git svn show-ignore » .git/info/exclude</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Ensure your checkout is pointing to the right repo</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git svn info</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And now you can start exploring and committing to the local git repo using git commands like</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add my-file
-</span><span class='line'>git commit my-file</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Then comes the slight difference between real git repos and git-svn repos. you most likely heard about git pushing changes. with git-svn, you’d</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git svn dcommit</span></code></pre></td></tr></table></div></figure>
-
-
-<p>to push changes to the svn repo. and there you go-you made your first commit to svn via git-irony!!</p>
-
-<p>More to come on .gitconfig, branches, cherry-pick’ing etc. but let me suggest installing bash-completion right away so you can just tab-complete the commands instead of typing out in entirety each time-all about saving those precious strokes that so risk every software engineer to carpal tunnel!</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/11/12/getting-into-the-git-land-via-svn/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -283,23 +215,12 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>ssh user@host “date”</span></code></pre></td></tr></table></div></figure>
 
 
-<p>But identifiying the server where you can find more information means running the above N times changing the host each time. For more involved tasks, it gets even more difficult. Oh and what if you accidentally missed a server and claimed that “something did not happen”! You can wrap the command in a loop and come up with a shell script (choose your own language), of course.</p>
-
-<p>But <a href="http://linux.die.net/man/1/pdsh">pdsh</a> simplifies all that. Its pretty much like your own wrapper, but only with more features - especially running in parallel. And fear not, its not learning another language. Even a simple run without too many options that it provides is enough to free up a ton of your time.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>pdsh -R ssh -w user@host[1-8].full.name “date”</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Looks so familiar, ain’t it? And all it does is parallel’ly run the date command remotely on host1 through host8.</p>
-
-<p>Whoa! Thats how many keystrokes and minutes saved of your life?</p>
-
-<p>Try it for yourself: <a href="https://code.google.com/p/pdsh/downloads/list">Google Code</a></p>
-
-<p>This is just a flyer ad for pdsh. More details will follow as I keep using it.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/05/pdsh-parallel-distributed-shell/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -342,27 +263,12 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>www.example.com. CNAME example.com.</span></code></pre></td></tr></table></div></figure>
 
 
-<p>And all it is saying is that www.example.com is just another name for example.com, so serve the request as if it went directly to example.com. A-record on the other hand is telling you where to find Jane Smith and Mrs.Smith. In cyberspace, its the address of the machine capable of servicing the requests to example.com and looks equally simple as:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>example.com. A 123.45.67.8</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In essence, the minimum DNS entry when you set up a new site should look like:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>www.example.com. CNAME example.com.
-</span><span class='line'>example.com. A 123.45.67.8</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The order does not matter as much, but note that each CNAME needs a minimum of 2 lookups to get to the machine to talk to.</p>
-
-<p>So choose wisely, depending on how many hoops are required to finally get to the machine!</p>
-
-<p>For the geek in you, the trailing . in the domain names is for the imaginary root server in the internet hierarchy and is called a FQDN notation (Fully Qualified Domain Name)</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/03/cname-vs-a-record/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -409,25 +315,12 @@
 
 <p>from the shell and voila! you are at the all too familiar bash prompt on the hosting server!</p>
 
-<p>But notice that you had to enter your crazy-incomprehensible password,that you most likely copy-paste’d from the email. If you plan on spending any significant time on this box, you will get in and out of it and will be forced to enter the password each time - SSH keys coming to the rescue! I generally use RSA for my keys from my own desktop/laptop.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-keygen -t rsa</span></code></pre></td></tr></table></div></figure>
-
-
-<p>will generate the necessary public/private keys in your .ssh directory.</p>
-
-<p>You then create a .ssh directory on the new machine and add the id_rsa.pub key to a new authorized_keys file on the server. At the end, here is how the file setup looks like —> note the permissions: 700 for the .ssh directory and 644 for the authorized_keys file</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>drwx———  2 username groupname 4096 Sep 30 17:26 ./
-</span><span class='line'>-rw-r—r—  1 username groupname  752 Sep 30 17:26 authorized_keys</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And the next time you ssh to the host, you dont have to go searching for the password in your email anymore!</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/02/ssh-access-to-the-hosting-server/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -466,31 +359,12 @@
 
 <p>Now where does that start? With signing up for a easy to recognize name that is associated with the entity at a Domain Registrar - one who makes sure that you own that name and no one else can get that name, like GoDaddy, 1and1, Network Solutions etc. And you pay for their services-anywhere from $10 to $100+ a year. (Prepare to shell out in the thousands if you want a name real bad, that is already taken). At this point, you only have the name to your credit, with a generic message showing at most but no where close to what you want it to actually be like, when you visit the site via a web browser.</p>
 
-<p>The next step is to get some space on a machine connected to the internet-always, so that John in Bangkok or Joe in Paris can see your website anytime of the day. Called Web Hosting, there are so many choices again here - shared, dedicated, colocation - including the big names like Amazon Web Services, Google App Engine, Microsoft Azure etc.</p>
-
-<p>For a simple website, I suggest something like HostGator (best of the lot if you ask me), BlueHost, 1and1, Namecheap and such, where you can get both the above mentioned services in 1 spot with an easy-to-use Control Panel to manage everything.</p>
-
-<p>By the way, for the geek in you,</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>whois example.com</span></code></pre></td></tr></table></div></figure>
-
-
-<p>shows the information you used to sign up with the Domain Registrar and</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>nslookup example.com 
-</span><span class='line'>dig example.com
-</span><span class='line'>ping example.com</span></code></pre></td></tr></table></div></figure>
-
-
-<p>show which IP address(machine) the domain is being served from.</p>
-
-<p>Oh and the next time, I can point anyone, who still ponders why pay twice and are they over-charging etc, straight here..hehe</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/10/01/domain-registration-vs-web-hosting/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -531,43 +405,12 @@
 
 <p><strong>Better way to do:</strong> restore the files, including the svn history.</p>
 
-<p>To see which revision deleted the file, foo.file</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ svn log -v 
-</span><span class='line'>r100 | me
-</span><span class='line'>D &lt;local_path&gt;/foo.file </span></code></pre></td></tr></table></div></figure>
-
-
-<p>Now copy the file from the previous revision using the repo url, not just the location on the local machine</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ svn copy -r 99 http://&lt;svn_repo_path&gt;/foo.file@99 &lt;local_path_to_foo.file&gt;/.
-</span><span class='line'>
-</span><span class='line'>$ svn status
-</span><span class='line'>A &lt;local_path&gt;/foo.file
-</span><span class='line'>
-</span><span class='line'>$ svn commit</span></code></pre></td></tr></table></div></figure>
-
-
-<p>And now the svn log still shows the entire history without the deletion</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ svn log &lt;local_path&gt;/foo.file
-</span><span class='line'>r101 | me | adding back foo.file
-</span><span class='line'>r99 | me | last known valid change</span></code></pre></td></tr></table></div></figure>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/03/14/svn-delete-an-oops-moment/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -611,35 +454,12 @@ svn: To better debug SSH connection problems, remove the -q option from ‘ssh�
 svn: Network connection closed unexpectedly
 </code></pre>
 
-<p>The configs(~/.ssh/config and /etc/ssh_config) had nothing specific to tunnels anywhere. I could login to <em>myhost</em> just fine and also port forward to it without problems like before, using the long standing aliases - so nothing stood out. Preliminary instinct is to purge the known_hosts file in ~/.ssh/known_hosts and rebuild it in case the host’s address had changed - no luck. You could see what ssh is doing on a connection with ssh -v, but this is svn+ssh, isnt it? a one-liner to the rescue!</p>
-
-<pre><code>$ export SVN_SSH=”ssh -v “
-</code></pre>
-
-<p>and then do retry the svn command to see:</p>
-
-<pre><code>ssh: Could not resolve hostname myhost: nodename nor servname provided, or not known
-</code></pre>
-
-<p>Are you kidding me?! Your stupid error message ran me down a dark alley about tunnels and the problem was actually with the hostname?!</p>
-
-<p><strong>Solution:</strong></p>
-
-<ol>
-<li>As simple as using the FQDN for myhost with each svn command:
- <code>
- $ svn ls svn+ssh://fqdn.myhost.com/myrepo
-</code></li>
-<li>The above is cumbersome if you already have aliases set up or are working with new repos. Better yet is to add the actual IP address for the host to your hosts file in /etc/hosts:
- <code>
- 123.13.13.1 myhost
-</code></li>
-</ol>
-
-
-<p><strong>Lesson:</strong> Do not trust the error messages at face value until you get more debug info about where/who its coming from!</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/03/13/svn-plus-ssh-network-connection-closed-unexpectedly/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -683,34 +503,12 @@ svn: Network connection closed unexpectedly
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>If you expect to do</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">SELECT</span> <span class="n">my_new_column</span> <span class="k">FROM</span> <span class="n">my_view</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>it sure is going to fail.</p>
-
-<p><strong>Solution:</strong> Either drop the view and recreate it:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">DROP</span> <span class="k">VIEW</span> <span class="n">my_view</span><span class="p">;</span>
-</span><span class='line'><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">my_view</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">my_table</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>or alter the view:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">ALTER</span> <span class="k">VIEW</span> <span class="n">my_view</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">list</span> <span class="k">of</span> <span class="k">all</span> <span class="n">columns</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">my_table</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p><strong>Lesson:</strong> Do not forget about the dependent views when you change a table’s structure!</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/03/12/mysql-effects-on-views-from-changes-to-table-structure/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -749,46 +547,12 @@ svn: Network connection closed unexpectedly
 
 <p>Your approach would really depend on how the migrations are set up. A simple solution no matter what(if you are using straight SQL), is to surround the actual migration sql in a stored procedure and set up continue handlers only for errors that you are already expecting like so:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">DELIMITER</span> <span class="o">//</span>
-</span><span class='line'><span class="k">CREATE</span> <span class="k">PROCEDURE</span> <span class="n">AddColumnIfNecessary</span> <span class="p">()</span>
-</span><span class='line'><span class="k">BEGIN</span>
-</span><span class='line'>    <span class="k">DECLARE</span> <span class="k">continue</span> <span class="k">handler</span> <span class="k">for</span> <span class="mi">1060</span> <span class="k">BEGIN</span> <span class="k">END</span><span class="p">;</span>
-</span><span class='line'>  <span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">mytable</span> <span class="k">add</span> <span class="n">newcolumn</span> <span class="o">&lt;</span><span class="k">type</span> <span class="k">and</span> <span class="k">constraints</span><span class="o">&gt;</span><span class="p">;</span>
-</span><span class='line'><span class="k">END</span> <span class="o">//</span>
-</span><span class='line'><span class="k">DELIMITER</span> <span class="p">;</span>
-</span><span class='line'><span class="k">CALL</span> <span class="n">AddColumnIfNecessary</span><span class="p">();</span>
-</span><span class='line'><span class="k">DROP</span> <span class="n">AddColumnIfNecessary</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If you are gearing up for table not existing too, then add another handler for 1146 as:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">DECLARE</span> <span class="k">continue</span> <span class="k">handler</span> <span class="k">for</span> <span class="mi">1146</span> <span class="k">BEGIN</span> <span class="k">END</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If you are working with views by the same name, you’d see “is not BASE TABLE”(error 1347), not table does not exist. So you’d need:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">DECLARE</span> <span class="k">continue</span> <span class="k">handler</span> <span class="k">for</span> <span class="mi">1347</span> <span class="k">BEGIN</span> <span class="k">END</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Essentially, its like try - catch for SQL! The above handlers, if you noticed, are not really doing anything between the BEGIN and END. But you can set up any additional SQL in there. However, make sure to declare the handlers before you actually execute the SQL which is going to “throw” these errors</p>
-
-<p><strong>Lesson:</strong> Although there are work-arounds like the above, think through why the purpose of “migrations” is defeated in the first place and if the process(whatever triggered the need for altering the table) should even be part of a migration when you are manually meddling with the database.</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/03/10/database-migrations-continue-on-expected-errors/">Read on &rarr;</a>
+    </footer>
   
 
 

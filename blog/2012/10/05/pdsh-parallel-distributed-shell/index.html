@@ -114,6 +114,9 @@
 </pre></td><td class='code'><pre><code class=''><span class='line'>ssh user@host “date”</span></code></pre></td></tr></table></div></figure>
 
 
+<!-- more -->
+
+
 <p>But identifiying the server where you can find more information means running the above N times changing the host each time. For more involved tasks, it gets even more difficult. Oh and what if you accidentally missed a server and claimed that “something did not happen”! You can wrap the command in a loop and come up with a shell script (choose your own language), of course.</p>
 
 <p>But <a href="http://linux.die.net/man/1/pdsh">pdsh</a> simplifies all that. Its pretty much like your own wrapper, but only with more features - especially running in parallel. And fear not, its not learning another language. Even a simple run without too many options that it provides is enough to free up a ton of your time.</p>
