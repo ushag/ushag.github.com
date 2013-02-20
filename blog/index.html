@@ -9,7 +9,7 @@
   <meta name="author" content="Usha Guduri">
 
   
-  <meta name="description" content="Its easy to think that Mac UI is not customizable but behold-it is! However, these options are not available via the System Preferences but you can &hellip;">
+  <meta name="description" content="Once you clone a Git repository, you are highly unlikely to work on the master unless you are a Maverick! The immediate thing you will look out for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,53 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/02/19/git-branches-local/">Git Branches - Local</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2013-02-19T20:23:00-05:00" pubdate data-updated="true">Feb 19<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Once you clone a Git repository, you are highly unlikely to work on the <em>master</em> unless you are a Maverick! The immediate thing you will look out for is branching - whether it is to add new features or even fix your bugs before pushing them live (Do you do &#8216;Test Driven Development&#8217;, by the way? :-D ). And Git is a great tool in this realm because branches are really really cheap - both in terms of memory and time (when switching between branches)</p>
+
+<p>You start off with knowing the current branch you are working on with</p>
+
+<pre><code>$ git branch
+</code></pre>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2013/02/19/git-branches-local/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2012/11/16/mac-ui-tweaks/">Mac UI Tweaks</a></h1>
     
     
@@ -116,7 +163,7 @@
 <p>Some of the more often looked for settings are shown below. But I&#8217;ve started working on a small utility called <a href="https://github.com/ushag/mac-utils">maclets</a> that is a compilation of settings I find myself frequently using. Once sourced it can be used as:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>toggle &lt;service&gt; &lt;on/off&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ toggle &lt;service&gt; &lt;on/off&gt;</span></code></pre></td></tr></table></div></figure>
 
 
 </div>
@@ -212,7 +259,7 @@
 <p>One option is to run a remote command via ssh like:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh user@host “date”</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh user@host “date”</span></code></pre></td></tr></table></div></figure>
 
 
 </div>
@@ -310,7 +357,7 @@
 <p>Then you can type</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh -p 1234 username@123.456.78.9</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh -p 1234 username@123.456.78.9</span></code></pre></td></tr></table></div></figure>
 
 
 <p>from the shell and voila! you are at the all too familiar bash prompt on the hosting server!</p>
@@ -514,50 +561,6 @@ svn: Network connection closed unexpectedly
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/10/database-migrations-continue-on-expected-errors/">Database Migrations: Continue on Expected Errors</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2012-03-10T15:07:00-05:00" pubdate data-updated="true">Mar 10<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Ever ran into a situation where the migrations would work just as expected in production, but for some reason, are not applicable to other environments? Could be either because the tables exist in production, but for saving space, the other environments use views on it or because you had to manually add the column to set up the new data, so that the application would not come crashing down.</p>
-
-<p>Your approach would really depend on how the migrations are set up. A simple solution no matter what(if you are using straight SQL), is to surround the actual migration sql in a stored procedure and set up continue handlers only for errors that you are already expecting like so:</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/03/10/database-migrations-continue-on-expected-errors/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -573,6 +576,10 @@ svn: Network connection closed unexpectedly
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/02/19/git-branches-local/">Git Branches - Local</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/11/16/mac-ui-tweaks/">Mac UI Tweaks</a>
       </li>
     
@@ -586,10 +593,6 @@ svn: Network connection closed unexpectedly
     
       <li class="post">
         <a href="/blog/2012/10/03/cname-vs-a-record/">CNAME Vs. A Record</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/02/ssh-access-to-the-hosting-server/">SSH access to the Hosting server</a>
       </li>
     
   </ul>
@@ -616,7 +619,7 @@ svn: Network connection closed unexpectedly
 
 
 <section>
-    <span id="category-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#ffffff' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x0&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdatabase%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edatabase%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdate%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Edate%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdns%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edns%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdomain%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edomain%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fflyway%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eflyway%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fgit%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Egit%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fhostgator%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ehostgator%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ejava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fjavascript%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ejavascript%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmac%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emac%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmigration%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emigration%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmysql%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emysql%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fnslookup%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Enslookup%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fpdsh%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Epdsh%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fsql%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Esql%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fssh%27+style%3D%27font-size%3A+50.0%25%27%3Essh%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fssh-keys%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Essh-keys%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fsvn%27+style%3D%27font-size%3A+50.0%25%27%3Esvn%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftesting%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Etesting%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftime%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Etime%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftweaks%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Etweaks%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fwatir%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Ewatir%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fwhois%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ewhois%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fxpath%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Expath%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+    <span id="category-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#ffffff' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x0&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fbranch%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ebranch%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdatabase%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edatabase%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdate%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Edate%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdns%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edns%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdomain%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edomain%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fflyway%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eflyway%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fgit%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Egit%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fgit-%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Egit%2C%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fhostgator%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ehostgator%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ejava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fjavascript%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ejavascript%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmac%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emac%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmigration%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emigration%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmysql%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emysql%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fnslookup%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Enslookup%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fpdsh%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Epdsh%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fsql%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Esql%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fssh%27+style%3D%27font-size%3A+50.0%25%27%3Essh%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fssh-keys%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Essh-keys%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fsvn%27+style%3D%27font-size%3A+50.0%25%27%3Esvn%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftesting%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Etesting%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftime%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Etime%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftweaks%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Etweaks%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fwatir%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Ewatir%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fwhois%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ewhois%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fxpath%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Expath%3C%2Fa%3E+%3C%2Ftags%3E"></span>
 </section>
 
   

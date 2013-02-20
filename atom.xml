@@ -4,7 +4,7 @@
   <title><![CDATA[Usha Guduri]]></title>
   <link href="http://ushaguduri.com/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-02-19T18:03:34-05:00</updated>
+  <updated>2013-02-19T22:31:56-05:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -12,6 +12,56 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Git Branches - Local]]></title>
+    <link href="http://ushaguduri.com/blog/2013/02/19/git-branches-local/"/>
+    <updated>2013-02-19T20:23:00-05:00</updated>
+    <id>http://ushaguduri.com/blog/2013/02/19/git-branches-local</id>
+    <content type="html"><![CDATA[<p>Once you clone a Git repository, you are highly unlikely to work on the <em>master</em> unless you are a Maverick! The immediate thing you will look out for is branching - whether it is to add new features or even fix your bugs before pushing them live (Do you do &#8216;Test Driven Development&#8217;, by the way? :-D ). And Git is a great tool in this realm because branches are really really cheap - both in terms of memory and time (when switching between branches)</p>
+
+<p>You start off with knowing the current branch you are working on with</p>
+
+<pre><code>$ git branch
+</code></pre>
+
+<!-- more -->
+
+
+<p>You can get a list of all the branches using:</p>
+
+<pre><code>$ git branch -a --&gt; all local and remote branches
+$ git branch -r --&gt; remote branches only
+</code></pre>
+
+<p>Creating a local branch is a simple</p>
+
+<pre><code>$ git branch myLocalBranch
+</code></pre>
+
+<p>Beware that the above only creates a branch, it does not check it out and set it up ready for use. To do both at once, you can use:</p>
+
+<pre><code>$ git checkout -b myLocalBranch
+</code></pre>
+
+<p>While working in branches is good, it is also a good practice to keep your branch as close as possible to master (if you want to avoid day long conflict resolutions) by regularly updating from master by one of the 2 following ways:</p>
+
+<ol>
+<li><p>merging master into your branch. This will create a separate commit that master was merged or a custom message that you may choose in case of conflicts.</p>
+
+<pre><code> $ git merge master
+</code></pre></li>
+<li><p>rebasing against master, generally a cleaner (preferred by many) way to get the changes into your branch. This does not create a separate commit in case of conflicts.</p>
+
+<pre><code> $ git rebase master
+ $ git rebase --continue (once you resolve any conflicts)
+</code></pre></li>
+</ol>
+
+
+<p>Note that these are just local branches on your machine. All changes/commits reside on your machine, not on the remote server. We&#8217;ll look at remote branches soon.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Mac UI Tweaks]]></title>
@@ -25,7 +75,7 @@
 <p>Some of the more often looked for settings are shown below. But I&#8217;ve started working on a small utility called <a href="https://github.com/ushag/mac-utils">maclets</a> that is a compilation of settings I find myself frequently using. Once sourced it can be used as:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>toggle &lt;service&gt; &lt;on/off&gt;</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ toggle &lt;service&gt; &lt;on/off&gt;</span></code></pre></td></tr></table></div></figure>
 
 
 <!-- more -->
@@ -42,31 +92,31 @@
 <p>Switch off(YES)/on(NO) Dashboard</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.dashboard mcx-disabled -boolean YES; killall Dock</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ defaults write com.apple.dashboard mcx-disabled -boolean YES; killall Dock</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Show(true)/hide(false) desktop icons</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.finder CreateDesktop -bool false; killall Finder</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ defaults write com.apple.finder CreateDesktop -bool false; killall Finder</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Disable(false)/enable(true) character picker on long key press in Lion in favor of key repeat (this was a really annoying change)</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write -g ApplePressAndHoldEnabled -bool false </span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ defaults write -g ApplePressAndHoldEnabled -bool false </span></code></pre></td></tr></table></div></figure>
 
 
 <p>Disable(true)/enable(false) Ping sidebar</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.iTunes disablePingSidebar -bool true</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ defaults write com.apple.iTunes disablePingSidebar -bool true</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Disable(true)/enable(true) Ping stuff in iTunes</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>defaults write com.apple.iTunes disablePing -bool true</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ defaults write com.apple.iTunes disablePing -bool true</span></code></pre></td></tr></table></div></figure>
 
 ]]></content>
   </entry>
@@ -88,39 +138,39 @@
 
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git svn clone -s http://example.com/subversion_repo local_dir</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git svn clone -s http://example.com/subversion_repo local_dir</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If your svn repo is not using the standard layout of trunk/branches/tags, you can specify what they are using -T , -b , -t like so</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git svn clone -s http://example.com/my_subversion_repo -T trunk -b my-branch-tree -t my-tag-tree local_dir</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git svn clone -s http://example.com/my_subversion_repo -T trunk -b my-branch-tree -t my-tag-tree local_dir</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Before you start making changes though, you might want to set up the annoying ‘ignores’. Just copy over svn ignore config into git with:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git svn show-ignore » .git/info/exclude</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git svn show-ignore » .git/info/exclude</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Ensure your checkout is pointing to the right repo</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git svn info</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git svn info</span></code></pre></td></tr></table></div></figure>
 
 
 <p>And now you can start exploring and committing to the local git repo using git commands like</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git add my-file
-</span><span class='line'>git commit my-file</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git add my-file
+</span><span class='line'>$ git commit my-file</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Then comes the slight difference between real git repos and git-svn repos. you most likely heard about git pushing changes. with git-svn, you’d</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>git svn dcommit</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ git svn dcommit</span></code></pre></td></tr></table></div></figure>
 
 
 <p>to push changes to the svn repo. and there you go-you made your first commit to svn via git-irony!!</p>
@@ -139,7 +189,7 @@
 <p>One option is to run a remote command via ssh like:</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh user@host “date”</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh user@host “date”</span></code></pre></td></tr></table></div></figure>
 
 
 <!-- more -->
@@ -150,7 +200,7 @@
 <p>But <a href="http://linux.die.net/man/1/pdsh">pdsh</a> simplifies all that. Its pretty much like your own wrapper, but only with more features - especially running in parallel. And fear not, its not learning another language. Even a simple run without too many options that it provides is enough to free up a ton of your time.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>pdsh -R ssh -w user@host[1-8].full.name “date”</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ pdsh -R ssh -w user@host[1-8].full.name “date”</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Looks so familiar, ain’t it? And all it does is parallel’ly run the date command remotely on host1 through host8.</p>
@@ -213,7 +263,7 @@
 <p>Then you can type</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh -p 1234 username@123.456.78.9</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh -p 1234 username@123.456.78.9</span></code></pre></td></tr></table></div></figure>
 
 
 <p>from the shell and voila! you are at the all too familiar bash prompt on the hosting server!</p>
@@ -224,7 +274,7 @@
 <p>But notice that you had to enter your crazy-incomprehensible password,that you most likely copy-paste’d from the email. If you plan on spending any significant time on this box, you will get in and out of it and will be forced to enter the password each time - SSH keys coming to the rescue! I generally use RSA for my keys from my own desktop/laptop.</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ssh-keygen -t rsa</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ ssh-keygen -t rsa</span></code></pre></td></tr></table></div></figure>
 
 
 <p>will generate the necessary public/private keys in your .ssh directory.</p>
@@ -363,14 +413,14 @@ svn: Network connection closed unexpectedly
 <p><strong>Solution:</strong></p>
 
 <ol>
-<li>As simple as using the FQDN for myhost with each svn command:
- <code>
- $ svn ls svn+ssh://fqdn.myhost.com/myrepo
-</code></li>
-<li>The above is cumbersome if you already have aliases set up or are working with new repos. Better yet is to add the actual IP address for the host to your hosts file in /etc/hosts:
- <code>
- 123.13.13.1 myhost
-</code></li>
+<li><p>As simple as using the FQDN for myhost with each svn command:</p>
+
+<pre><code> $ svn ls svn+ssh://fqdn.myhost.com/myrepo
+</code></pre></li>
+<li><p>The above is cumbersome if you already have aliases set up or are working with new repos. Better yet is to add the actual IP address for the host to your hosts file in /etc/hosts:</p>
+
+<pre><code> 123.13.13.1 myhost
+</code></pre></li>
 </ol>
 
 

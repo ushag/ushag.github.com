@@ -4,7 +4,7 @@
   <title><![CDATA[Category: pdsh | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/pdsh/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-02-19T18:03:34-05:00</updated>
+  <updated>2013-02-19T22:31:56-05:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -22,7 +22,7 @@
 
 <p>One option is to run a remote command via ssh like:
 <code>
-ssh user@host “date”
+$ ssh user@host “date”
 </code></p>
 
 <!-- more -->
@@ -32,7 +32,7 @@ ssh user@host “date”
 
 <p>But <a href="http://linux.die.net/man/1/pdsh">pdsh</a> simplifies all that. Its pretty much like your own wrapper, but only with more features - especially running in parallel. And fear not, its not learning another language. Even a simple run without too many options that it provides is enough to free up a ton of your time.
 <code>
-pdsh -R ssh -w user@host[1-8].full.name “date”
+$ pdsh -R ssh -w user@host[1-8].full.name “date”
 </code></p>
 
 <p>Looks so familiar, ain’t it? And all it does is parallel’ly run the date command remotely on host1 through host8.</p>

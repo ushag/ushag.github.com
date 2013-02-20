@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Finding Watir Elements with XPATH - Usha Guduri</title>
+  <title>Git Branches - Local - Usha Guduri</title>
   <meta name="author" content="Usha Guduri">
 
   
-  <meta name="description" content="We recently got into automated ui testing with watir. First impression: Awesome! Then we added rspec and rake when the nightmares began - more about &hellip;">
+  <meta name="description" content="Once you clone a Git repository, you are highly unlikely to work on the master unless you are a Maverick! The immediate thing you will look out for &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ushaguduri.com/blog/2012/02/24/finding-watir-elements-with-xpath/">
+  <link rel="canonical" href="http://ushaguduri.com/blog/2013/02/19/git-branches-local/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/ug.css" rel="stylesheet" type="text/css">
@@ -82,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Finding Watir Elements With XPATH</h1>
+      <h1 class="entry-title">Git Branches - Local</h1>
     
     
       <p class="meta">
@@ -99,48 +99,55 @@
 
 
 
-<time datetime="2012-02-24T16:10:00-05:00" pubdate data-updated="true">Feb 24<span>th</span>, 2012</time>
+<time datetime="2013-02-19T20:23:00-05:00" pubdate data-updated="true">Feb 19<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>We recently got into automated ui testing with watir.</p>
+<div class="entry-content"><p>Once you clone a Git repository, you are highly unlikely to work on the <em>master</em> unless you are a Maverick! The immediate thing you will look out for is branching - whether it is to add new features or even fix your bugs before pushing them live (Do you do &#8216;Test Driven Development&#8217;, by the way? :-D ). And Git is a great tool in this realm because branches are really really cheap - both in terms of memory and time (when switching between branches)</p>
 
-<p>First impression: Awesome!</p>
+<p>You start off with knowing the current branch you are working on with</p>
 
-<p>Then we added rspec and rake when the nightmares began - more about that later perhaps.</p>
-
-<p>For a simple page with a few DOM elements, its pretty straightforward. Enter a highly dynamic, complex rendering logic and the DOM access breaks down. Something even as intellectually simple as:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">browser</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="ss">:id</span><span class="o">=&gt;</span><span class="err">”</span><span class="n">myid</span><span class="err">”</span><span class="p">)</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="ss">:class</span><span class="o">=&gt;</span><span class="err">”</span><span class="n">myclass</span><span class="err">”</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
+<pre><code>$ git branch
+</code></pre>
 
 <!-- more -->
 
 
-<p>actually coughed and puffed with the watir-webdriver &lt;0.5 versions, specifically on Firefox. But of course, there is a workaround - XPATH! We are ‘Engineers’ afterall!</p>
+<p>You can get a list of all the branches using:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">browser</span><span class="o">.</span><span class="n">element</span><span class="p">(</span><span class="ss">:xpath</span> <span class="o">=&gt;</span> <span class="err">“</span><span class="o">//</span><span class="n">div</span><span class="o">[</span><span class="nb">id</span><span class="o">=</span><span class="n">myid</span><span class="o">]/</span><span class="n">div</span><span class="o">[</span><span class="n">class</span><span class="o">=</span><span class="n">myclass</span><span class="o">]</span><span class="err">”</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
+<pre><code>$ git branch -a --&gt; all local and remote branches
+$ git branch -r --&gt; remote branches only
+</code></pre>
+
+<p>Creating a local branch is a simple</p>
+
+<pre><code>$ git branch myLocalBranch
+</code></pre>
+
+<p>Beware that the above only creates a branch, it does not check it out and set it up ready for use. To do both at once, you can use:</p>
+
+<pre><code>$ git checkout -b myLocalBranch
+</code></pre>
+
+<p>While working in branches is good, it is also a good practice to keep your branch as close as possible to master (if you want to avoid day long conflict resolutions) by regularly updating from master by one of the 2 following ways:</p>
+
+<ol>
+<li><p>merging master into your branch. This will create a separate commit that master was merged or a custom message that you may choose in case of conflicts.</p>
+
+<pre><code> $ git merge master
+</code></pre></li>
+<li><p>rebasing against master, generally a cleaner (preferred by many) way to get the changes into your branch. This does not create a separate commit in case of conflicts.</p>
+
+<pre><code> $ git rebase master
+ $ git rebase --continue (once you resolve any conflicts)
+</code></pre></li>
+</ol>
 
 
-<p>The problem with XPath though, is that its absolute and highly specific. If you so much as change the class from</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='html'><span class='line'><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">”myclass</span> <span class="na">myclass2</span><span class="err">”</span><span class="nt">&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Xpath breaks and so do your tests.</p>
-
-<p><strong>Solution:</strong> Update to watir-webdriver 0.5.2</p>
-
-<p><strong>Lesson:</strong> Be wary of anything &lt; 1.0</p>
+<p>Note that these are just local branches on your machine. All changes/commits reside on your machine, not on the remote server. We&#8217;ll look at remote branches soon.</p>
 </div>
 
 
@@ -164,12 +171,12 @@
 
 
 
-<time datetime="2012-02-24T16:10:00-05:00" pubdate data-updated="true">Feb 24<span>th</span>, 2012</time>
+<time datetime="2013-02-19T20:23:00-05:00" pubdate data-updated="true">Feb 19<span>th</span>, 2013</time>
       
 
 <span class="categories right">
   
-    <a class='category' href='/blog/categories/testing/'>testing</a>, <a class='category' href='/blog/categories/watir/'>watir</a>, <a class='category' href='/blog/categories/xpath/'>xpath</a>
+    <a class='category' href='/blog/categories/branch/'>branch</a>, <a class='category' href='/blog/categories/git-/'>git,</a>
   
 </span>
 
@@ -178,7 +185,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ushaguduri.com/blog/2012/02/24/finding-watir-elements-with-xpath/" data-via="ushaguduri" data-counturl="http://ushaguduri.com/blog/2012/02/24/finding-watir-elements-with-xpath/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ushaguduri.com/blog/2013/02/19/git-branches-local/" data-via="ushaguduri" data-counturl="http://ushaguduri.com/blog/2013/02/19/git-branches-local/" >Tweet</a>
   
   
   
@@ -189,8 +196,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2012/11/16/mac-ui-tweaks/" title="Previous Post: Mac UI Tweaks">&laquo; Mac UI Tweaks</a>
       
-        <a class="basic-alignment right" href="/blog/2012/02/29/advanced-watir-use/" title="Next Post: Advanced Watir Use">Advanced Watir Use &raquo;</a>
       
     </p>
   </footer>
@@ -276,8 +283,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://ushaguduri.com/blog/2012/02/24/finding-watir-elements-with-xpath/';
-        var disqus_url = 'http://ushaguduri.com/blog/2012/02/24/finding-watir-elements-with-xpath/';
+        var disqus_identifier = 'http://ushaguduri.com/blog/2013/02/19/git-branches-local/';
+        var disqus_url = 'http://ushaguduri.com/blog/2013/02/19/git-branches-local/';
         var disqus_script = 'embed.js';
       
     (function () {

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ssh | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/ssh/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-02-19T18:03:34-05:00</updated>
+  <updated>2013-02-19T22:31:56-05:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -22,7 +22,7 @@
 
 <p>One option is to run a remote command via ssh like:
 <code>
-ssh user@host “date”
+$ ssh user@host “date”
 </code></p>
 
 <!-- more -->
@@ -32,7 +32,7 @@ ssh user@host “date”
 
 <p>But <a href="http://linux.die.net/man/1/pdsh">pdsh</a> simplifies all that. Its pretty much like your own wrapper, but only with more features - especially running in parallel. And fear not, its not learning another language. Even a simple run without too many options that it provides is enough to free up a ton of your time.
 <code>
-pdsh -R ssh -w user@host[1-8].full.name “date”
+$ pdsh -R ssh -w user@host[1-8].full.name “date”
 </code></p>
 
 <p>Looks so familiar, ain’t it? And all it does is parallel’ly run the date command remotely on host1 through host8.</p>
@@ -56,7 +56,7 @@ pdsh -R ssh -w user@host[1-8].full.name “date”
 
 <p>Then you can type
 <code>
-ssh -p 1234 username@123.456.78.9
+$ ssh -p 1234 username@123.456.78.9
 </code></p>
 
 <p>from the shell and voila! you are at the all too familiar bash prompt on the hosting server!</p>
@@ -67,7 +67,7 @@ ssh -p 1234 username@123.456.78.9
 <p>But notice that you had to enter your crazy-incomprehensible password,that you most likely copy-paste’d from the email. If you plan on spending any significant time on this box, you will get in and out of it and will be forced to enter the password each time - SSH keys coming to the rescue! I generally use RSA for my keys from my own desktop/laptop.</p>
 
 <p><code>
-ssh-keygen -t rsa
+$ ssh-keygen -t rsa
 </code></p>
 
 <p>will generate the necessary public/private keys in your .ssh directory.</p>
@@ -114,14 +114,14 @@ svn: Network connection closed unexpectedly
 <p><strong>Solution:</strong></p>
 
 <ol>
-<li>As simple as using the FQDN for myhost with each svn command:
- <code>
- $ svn ls svn+ssh://fqdn.myhost.com/myrepo
-</code></li>
-<li>The above is cumbersome if you already have aliases set up or are working with new repos. Better yet is to add the actual IP address for the host to your hosts file in /etc/hosts:
- <code>
- 123.13.13.1 myhost
-</code></li>
+<li><p>As simple as using the FQDN for myhost with each svn command:</p>
+
+<pre><code> $ svn ls svn+ssh://fqdn.myhost.com/myrepo
+</code></pre></li>
+<li><p>The above is cumbersome if you already have aliases set up or are working with new repos. Better yet is to add the actual IP address for the host to your hosts file in /etc/hosts:</p>
+
+<pre><code> 123.13.13.1 myhost
+</code></pre></li>
 </ol>
 
 
