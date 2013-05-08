@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ssh | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/ssh/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-05-08T12:53:40-04:00</updated>
+  <updated>2013-05-08T15:23:26-04:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -46,7 +46,7 @@ $ pdsh -R ssh -w user@host[1-8].full.name “date”
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[SSH access to the Hosting server]]></title>
+    <title type="html"><![CDATA[SSH Access to the Hosting server]]></title>
     <link href="http://ushaguduri.com/blog/2012/10/02/ssh-access-to-the-hosting-server/"/>
     <updated>2012-10-02T14:25:00-04:00</updated>
     <id>http://ushaguduri.com/blog/2012/10/02/ssh-access-to-the-hosting-server</id>

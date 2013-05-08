@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: flyway - Usha Guduri</title>
+  <title>Unix in Simple English: whatis-whereis-locate-which - Usha Guduri</title>
   <meta name="author" content="Usha Guduri">
 
   
-  <meta name="description" content="Category: flyway">
+  <meta name="description" content="unix commands to determine the binaries">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ushaguduri.comblog/categories/flyway/">
+  <link rel="canonical" href="http://ushaguduri.com/blog/2013/03/12/whatis-whereis-locate-which/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/ug.css" rel="stylesheet" type="text/css">
@@ -99,36 +99,142 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: flyway</h1>
+    
+      <h1 class="entry-title">Unix in Simple English: whatis-whereis-locate-which</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2013-03-12T13:04:00-04:00" pubdate data-updated="true">Mar 12<span>th</span>, 2013</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>Each application/program over time, as it evolves (hopefully for the better!), is released in several versions. Ever wondered which version is being used or where/what all the versions installed are?
+Its quite easy with just using simple english in unix!</p>
 
-  
-  <h2>2012</h2>
+<p>Lets start with a quick snippet on what an executable is with &#8216;whatis&#8217;. It searches for <em>whole</em> words within the whatis database that contains short descriptions of system commands.</p>
 
-<article>
-  
-<h1><a href="/blog/2012/03/10/database-migrations-continue-on-expected-errors/">Database Migrations: Continue on Expected Errors</a></h1>
-<time datetime="2012-03-10T15:07:00-05:00" pubdate><span class='month'>Mar</span> <span class='day'>10</span> <span class='year'>2012</span></time>
+<pre><code>$ whatis ruby
+irb(1), erb(1), ri(1), rdoc(1), testrb(1) - Ruby helper programs
+ruby(1)                  - Interpreted object-oriented scripting language
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/flyway/'>flyway</a>, <a class='category' href='/blog/categories/migration/'>migration</a>, <a class='category' href='/blog/categories/sql/'>sql</a></span>
-</footer>
+<p>Now &#8216;whereis&#8217; does the job of indicating where the specified executable is.</p>
+
+<!-- more -->
 
 
-</article>
+<pre><code>$ whereis ruby
+/usr/bin/ruby
+/usr/local/bin/ruby     
+</code></pre>
 
+<p>However, note that &#8216;whereis&#8217; only &#8220;checks the standard binary directories&#8221; like /bin, /sbin, /usr/bin. To locate all different variations of the file &#8216;ruby&#8217;, irrespective of where they are installed, we&#8217;d use &#8216;locate&#8217; like so:</p>
+
+<pre><code>$ locate ruby
+/Users/ushaguduri/.rvm/ruby-1.8.7-p371/ruby
+/Users/ushaguduri/.rvm/ruby-1.8.7-p371@global/ruby
+/Users/ushaguduri/.rvm/ruby-1.9.3-p392/ruby
+/Users/ushaguduri/.rvm/ruby-1.9.3-p392@global/ruby
+/Users/ushaguduri/.rvm/ruby-2.0.0-p0/ruby
+/Users/ushaguduri/.rvm/ruby-2.0.0-p0@global/ruby
+/usr/bin/ruby
+/usr/lib/ruby
+</code></pre>
+
+<p>This lists all matches in the filename including the full path for the given pattern. The database is pre-computed with `locatedb&#8217; and re-computed periodically. An alternative is to use the &#8216;find&#8217; command for more real-time results using tree search.</p>
+
+<p>And finally with all the different versions installed, which one is being used when you run &#8216;ruby&#8217;?</p>
+
+<pre><code>$ which ruby
+/Users/ushaguduri/.rvm/rubies/ruby-1.9.3-p385/bin/ruby
+</code></pre>
+
+<p>Since I changed the ruby version with rvm to 1.9.3, its showing the 1.9.3 executable. If I switched it back to the default, it would now look like this:</p>
+
+<pre><code>  $ which ruby
+  /usr/bin/ruby
+</code></pre>
+
+<p>&#8216;which&#8217; looks for the executable within the user&#8217;s path. Now how the user&#8217;s path is determined will be left for another post!</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">by <span class="fn">Usha Guduri</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2013-03-12T13:04:00-04:00" pubdate data-updated="true">Mar 12<span>th</span>, 2013</time>
+      
+
+<span class="categories right">
+  
+    <a class='category' href='/blog/categories/unix/'>unix</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ushaguduri.com/blog/2013/03/12/whatis-whereis-locate-which/" data-via="ushaguduri" data-counturl="http://ushaguduri.com/blog/2013/03/12/whatis-whereis-locate-which/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/08/extended-file-attributes/" title="Previous Post: Extended File Attributes">&laquo; Extended File Attributes</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -203,7 +309,10 @@
       var disqus_shortname = 'ushag';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ushaguduri.com/blog/2013/03/12/whatis-whereis-locate-which/';
+        var disqus_url = 'http://ushaguduri.com/blog/2013/03/12/whatis-whereis-locate-which/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

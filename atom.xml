@@ -4,7 +4,7 @@
   <title><![CDATA[Usha Guduri]]></title>
   <link href="http://ushaguduri.com/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-05-08T12:53:40-04:00</updated>
+  <updated>2013-05-08T15:23:26-04:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -12,6 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Unix in Simple English: whatis-whereis-locate-which]]></title>
+    <link href="http://ushaguduri.com/blog/2013/03/12/whatis-whereis-locate-which/"/>
+    <updated>2013-03-12T13:04:00-04:00</updated>
+    <id>http://ushaguduri.com/blog/2013/03/12/whatis-whereis-locate-which</id>
+    <content type="html"><![CDATA[<p>Each application/program over time, as it evolves (hopefully for the better!), is released in several versions. Ever wondered which version is being used or where/what all the versions installed are?
+Its quite easy with just using simple english in unix!</p>
+
+<p>Lets start with a quick snippet on what an executable is with &#8216;whatis&#8217;. It searches for <em>whole</em> words within the whatis database that contains short descriptions of system commands.</p>
+
+<pre><code>$ whatis ruby
+irb(1), erb(1), ri(1), rdoc(1), testrb(1) - Ruby helper programs
+ruby(1)                  - Interpreted object-oriented scripting language
+</code></pre>
+
+<p>Now &#8216;whereis&#8217; does the job of indicating where the specified executable is.</p>
+
+<!-- more -->
+
+
+<pre><code>$ whereis ruby
+/usr/bin/ruby
+/usr/local/bin/ruby     
+</code></pre>
+
+<p>However, note that &#8216;whereis&#8217; only &#8220;checks the standard binary directories&#8221; like /bin, /sbin, /usr/bin. To locate all different variations of the file &#8216;ruby&#8217;, irrespective of where they are installed, we&#8217;d use &#8216;locate&#8217; like so:</p>
+
+<pre><code>$ locate ruby
+/Users/ushaguduri/.rvm/ruby-1.8.7-p371/ruby
+/Users/ushaguduri/.rvm/ruby-1.8.7-p371@global/ruby
+/Users/ushaguduri/.rvm/ruby-1.9.3-p392/ruby
+/Users/ushaguduri/.rvm/ruby-1.9.3-p392@global/ruby
+/Users/ushaguduri/.rvm/ruby-2.0.0-p0/ruby
+/Users/ushaguduri/.rvm/ruby-2.0.0-p0@global/ruby
+/usr/bin/ruby
+/usr/lib/ruby
+</code></pre>
+
+<p>This lists all matches in the filename including the full path for the given pattern. The database is pre-computed with `locatedb&#8217; and re-computed periodically. An alternative is to use the &#8216;find&#8217; command for more real-time results using tree search.</p>
+
+<p>And finally with all the different versions installed, which one is being used when you run &#8216;ruby&#8217;?</p>
+
+<pre><code>$ which ruby
+/Users/ushaguduri/.rvm/rubies/ruby-1.9.3-p385/bin/ruby
+</code></pre>
+
+<p>Since I changed the ruby version with rvm to 1.9.3, its showing the 1.9.3 executable. If I switched it back to the default, it would now look like this:</p>
+
+<pre><code>  $ which ruby
+  /usr/bin/ruby
+</code></pre>
+
+<p>&#8216;which&#8217; looks for the executable within the user&#8217;s path. Now how the user&#8217;s path is determined will be left for another post!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Extended File Attributes]]></title>
@@ -31,6 +87,9 @@ That&#8217;s a way to associate metadata with a file. Its not used by the file s
 
 <pre><code> -@      Display extended attribute keys and sizes in long (-l) output.
 </code></pre>
+
+<!-- more -->
+
 
 <p>Further digging leads to the <em>xattr</em> command and using it on the <em>test_file</em> above showed interesting data:</p>
 
@@ -184,7 +243,7 @@ $ git branch -r --&gt; remote branches only
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Getting into the Git land-via SVN]]></title>
+    <title type="html"><![CDATA[Getting into the Git Land-via SVN]]></title>
     <link href="http://ushaguduri.com/blog/2012/11/12/getting-into-the-git-land-via-svn/"/>
     <updated>2012-11-12T14:15:00-05:00</updated>
     <id>http://ushaguduri.com/blog/2012/11/12/getting-into-the-git-land-via-svn</id>
@@ -314,7 +373,7 @@ $ git branch -r --&gt; remote branches only
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[SSH access to the Hosting server]]></title>
+    <title type="html"><![CDATA[SSH Access to the Hosting server]]></title>
     <link href="http://ushaguduri.com/blog/2012/10/02/ssh-access-to-the-hosting-server/"/>
     <updated>2012-10-02T14:25:00-04:00</updated>
     <id>http://ushaguduri.com/blog/2012/10/02/ssh-access-to-the-hosting-server</id>
