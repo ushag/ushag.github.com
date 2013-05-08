@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: mac | Usha Guduri]]></title>
-  <link href="http://ushaguduri.com/blog/categories/mac/atom.xml" rel="self"/>
+  <title><![CDATA[Category: unix | Usha Guduri]]></title>
+  <link href="http://ushaguduri.com/blog/categories/unix/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
   <updated>2013-05-08T12:53:40-04:00</updated>
   <id>http://ushaguduri.com/</id>
@@ -72,57 +72,6 @@ ushaguduri@work:Wed Feb 20 15:41:59 scripts(db5-v1-me) -&gt; xattr -w com.apple.
 
 <pre><code>   defaults write com.apple.LaunchServices LSQuarantine -bool NO
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mac UI Tweaks]]></title>
-    <link href="http://ushaguduri.com/blog/2012/11/16/mac-ui-tweaks/"/>
-    <updated>2012-11-16T13:46:00-05:00</updated>
-    <id>http://ushaguduri.com/blog/2012/11/16/mac-ui-tweaks</id>
-    <content type="html"><![CDATA[<p>Its easy to think that Mac UI is not customizable but behold-it is!</p>
-
-<p>However, these options are not available via the System Preferences but you can change them from the Terminal. <em>Note the inconsistencies in the boolean values: YES/NO, true/false, 1/0...I’d have expected better from Apple!</em></p>
-
-<p>Some of the more often looked for settings are shown below. But I've started working on a small utility called <a href="https://github.com/ushag/mac-utils">maclets</a> that is a compilation of settings I find myself frequently using. Once sourced it can be used as:</p>
-
-<p><code>
-$ toggle &lt;service&gt; &lt;on/off&gt;
-</code></p>
-
-<!-- more -->
-
-
-<p>Disable icon in Applicaiton Switcher: add this to the app’s Info.plist
-<code>
-&lt;key&gt;LSUIElement&lt;/key&gt;
-&lt;string&gt;1&lt;/string&gt;
-</code></p>
-
-<p>Switch off(YES)/on(NO) Dashboard
-<code>
-$ defaults write com.apple.dashboard mcx-disabled -boolean YES; killall Dock
-</code></p>
-
-<p>Show(true)/hide(false) desktop icons
-<code>
-$ defaults write com.apple.finder CreateDesktop -bool false; killall Finder
-</code></p>
-
-<p>Disable(false)/enable(true) character picker on long key press in Lion in favor of key repeat (this was a really annoying change)
-<code>
-$ defaults write -g ApplePressAndHoldEnabled -bool false
-</code></p>
-
-<p>Disable(true)/enable(false) Ping sidebar
-<code>
-$ defaults write com.apple.iTunes disablePingSidebar -bool true
-</code></p>
-
-<p>Disable(true)/enable(true) Ping stuff in iTunes
-<code>
-$ defaults write com.apple.iTunes disablePing -bool true
-</code></p>
 ]]></content>
   </entry>
   

@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: mysql - Usha Guduri</title>
+  <title>Extended File Attributes - Usha Guduri</title>
   <meta name="author" content="Usha Guduri">
 
   
-  <meta name="description" content="Category: mysql">
+  <meta name="description" content="The other day, a simple ushaguduri@work:Wed Feb 20 15:40:17 -&gt; ls -al
+-rw-r--r--@ 1 ushaguduri staff 899B Feb 20 15:26 test_file got me digging &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://ushaguduri.comblog/categories/mysql/">
+  <link rel="canonical" href="http://ushaguduri.com/blog/2013/03/08/extended-file-attributes/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/ug.css" rel="stylesheet" type="text/css">
@@ -99,36 +100,148 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Mysql</h1>
+    
+      <h1 class="entry-title">Extended File Attributes</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2013-03-08T12:04:00-05:00" pubdate data-updated="true">Mar 8<span>th</span>, 2013</time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>The other day, a simple</p>
 
-  
-  <h2>2012</h2>
+<pre><code>ushaguduri@work:Wed Feb 20 15:40:17 -&gt; ls -al
+-rw-r--r--@ 1 ushaguduri  staff   899B Feb 20 15:26 test_file
+</code></pre>
 
-<article>
-  
-<h1><a href="/blog/2012/03/12/mysql-effects-on-views-from-changes-to-table-structure/">MYSQL Effects on Views from Changes to Table Structure</a></h1>
-<time datetime="2012-03-12T15:23:00-04:00" pubdate><span class='month'>Mar</span> <span class='day'>12</span> <span class='year'>2012</span></time>
+<p>got me digging deeper into the underlying File System. Notice the <strong>@</strong> after the file permissions?
+That&#8217;s a way to associate metadata with a file. Its not used by the file system for any useful purpose - just to store additional information, say like the source of the file, author etc.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/database/'>database</a>, <a class='category' href='/blog/categories/mysql/'>mysql</a>, <a class='category' href='/blog/categories/sql/'>sql</a></span>
-</footer>
+<p>Bringing up the manual for the ls command describes the <strong>@</strong> as an available option too:</p>
+
+<pre><code> -@      Display extended attribute keys and sizes in long (-l) output.
+</code></pre>
+
+<p>Further digging leads to the <em>xattr</em> command and using it on the <em>test_file</em> above showed interesting data:</p>
+
+<pre><code>ushaguduri@work:Wed Feb 20 15:40:41 scripts(db5-v1-me) -&gt; xattr warmup_redis.rb
+com.apple.metadata:kMDItemWhereFroms
+com.apple.quarantine
+</code></pre>
+
+<p>The above two values in particular indicate:</p>
+
+<ol>
+<li><p><em>com.apple.metadata:kMDItemWhereFroms</em>: where the file was downloaded from along with a binary property list, if any</p></li>
+<li><p><em>com.apple.quarantine</em>: added by the OS the first time a file is downloaded(referring to the source of the download), so that it can ask for confirmation when the program is run (to stop malware by ensuring that the user is aware of a program wanting to execute). Once confirmed the attribute would be removed so that the program can run normally again without user confirmation.</p></li>
+</ol>
 
 
-</article>
+<p><em>xattr</em> command takes several options to manipulate the metadata:</p>
 
+<pre><code>-l --&gt; list the actual values
+-d --&gt; delete the attribute
+-w --&gt; set the attribute
+</code></pre>
+
+<p>For example:</p>
+
+<pre><code>ushaguduri@work:Wed Feb 20 15:41:57 scripts(db5-v1-me) -&gt; xattr -l test_file
+com.apple.metadata:kMDItemWhereFroms:
+00000000  62 70 6C 69 73 74 30 30 A2 01 02 5F 10 4F 68 74  |bplist00..._.Oht|
+00000010  74 70 73 3A 2F 2F 74 69 63 6B 65 74 73 2E 73 6D  |tps://&lt;website url&gt;|
+.......
+000000A0  00 00 00 00 01 01 00 00 00 00 00 00 00 03 00 00  |................|
+000000B0  00 00 00 00 00 00 00 00 00 00 00 00 00 9B        |..............|
+000000be
+com.apple.quarantine: 0001;51253196;Google Chrome DEV.app;193F85B5-63F1-4A50-A83E-5713ED49D904|com.google.Chrome
+ushaguduri@work:Wed Feb 20 15:41:59 scripts(db5-v1-me) -&gt; xattr -w com.apple.metadata:kMDItemWhereFroms http://example.com test_file
+</code></pre>
+
+<p><strong>Bonus:</strong> If you dont want the quarantine attribute set, you can override the defaults on Mac [if you know what you are doing ;)] as such:</p>
+
+<pre><code>   defaults write com.apple.LaunchServices LSQuarantine -bool NO
+</code></pre>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">by <span class="fn">Usha Guduri</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2013-03-08T12:04:00-05:00" pubdate data-updated="true">Mar 8<span>th</span>, 2013</time>
+      
+
+<span class="categories right">
+  
+    <a class='category' href='/blog/categories/mac/'>mac</a>, <a class='category' href='/blog/categories/unix/'>unix</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://ushaguduri.com/blog/2013/03/08/extended-file-attributes/" data-via="ushaguduri" data-counturl="http://ushaguduri.com/blog/2013/03/08/extended-file-attributes/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/02/19/git-branches-local/" title="Previous Post: Git Branches - Local">&laquo; Git Branches - Local</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -203,7 +316,10 @@
       var disqus_shortname = 'ushag';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://ushaguduri.com/blog/2013/03/08/extended-file-attributes/';
+        var disqus_url = 'http://ushaguduri.com/blog/2013/03/08/extended-file-attributes/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

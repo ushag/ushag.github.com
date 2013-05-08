@@ -9,7 +9,8 @@
   <meta name="author" content="Usha Guduri">
 
   
-  <meta name="description" content="Once you clone a Git repository, you are highly unlikely to work on the master unless you are a Maverick! The immediate thing you will look out for &hellip;">
+  <meta name="description" content="The other day, a simple ushaguduri@work:Wed Feb 20 15:40:17 -&gt; ls -al
+-rw-r--r--@ 1 ushaguduri staff 899B Feb 20 15:26 test_file got me digging &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -100,6 +101,96 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/03/08/extended-file-attributes/">Extended File Attributes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2013-03-08T12:04:00-05:00" pubdate data-updated="true">Mar 8<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The other day, a simple</p>
+
+<pre><code>ushaguduri@work:Wed Feb 20 15:40:17 -&gt; ls -al
+-rw-r--r--@ 1 ushaguduri  staff   899B Feb 20 15:26 test_file
+</code></pre>
+
+<p>got me digging deeper into the underlying File System. Notice the <strong>@</strong> after the file permissions?
+That&#8217;s a way to associate metadata with a file. Its not used by the file system for any useful purpose - just to store additional information, say like the source of the file, author etc.</p>
+
+<p>Bringing up the manual for the ls command describes the <strong>@</strong> as an available option too:</p>
+
+<pre><code> -@      Display extended attribute keys and sizes in long (-l) output.
+</code></pre>
+
+<p>Further digging leads to the <em>xattr</em> command and using it on the <em>test_file</em> above showed interesting data:</p>
+
+<pre><code>ushaguduri@work:Wed Feb 20 15:40:41 scripts(db5-v1-me) -&gt; xattr warmup_redis.rb
+com.apple.metadata:kMDItemWhereFroms
+com.apple.quarantine
+</code></pre>
+
+<p>The above two values in particular indicate:</p>
+
+<ol>
+<li><p><em>com.apple.metadata:kMDItemWhereFroms</em>: where the file was downloaded from along with a binary property list, if any</p></li>
+<li><p><em>com.apple.quarantine</em>: added by the OS the first time a file is downloaded(referring to the source of the download), so that it can ask for confirmation when the program is run (to stop malware by ensuring that the user is aware of a program wanting to execute). Once confirmed the attribute would be removed so that the program can run normally again without user confirmation.</p></li>
+</ol>
+
+
+<p><em>xattr</em> command takes several options to manipulate the metadata:</p>
+
+<pre><code>-l --&gt; list the actual values
+-d --&gt; delete the attribute
+-w --&gt; set the attribute
+</code></pre>
+
+<p>For example:</p>
+
+<pre><code>ushaguduri@work:Wed Feb 20 15:41:57 scripts(db5-v1-me) -&gt; xattr -l test_file
+com.apple.metadata:kMDItemWhereFroms:
+00000000  62 70 6C 69 73 74 30 30 A2 01 02 5F 10 4F 68 74  |bplist00..._.Oht|
+00000010  74 70 73 3A 2F 2F 74 69 63 6B 65 74 73 2E 73 6D  |tps://&lt;website url&gt;|
+.......
+000000A0  00 00 00 00 01 01 00 00 00 00 00 00 00 03 00 00  |................|
+000000B0  00 00 00 00 00 00 00 00 00 00 00 00 00 9B        |..............|
+000000be
+com.apple.quarantine: 0001;51253196;Google Chrome DEV.app;193F85B5-63F1-4A50-A83E-5713ED49D904|com.google.Chrome
+ushaguduri@work:Wed Feb 20 15:41:59 scripts(db5-v1-me) -&gt; xattr -w com.apple.metadata:kMDItemWhereFroms http://example.com test_file
+</code></pre>
+
+<p><strong>Bonus:</strong> If you dont want the quarantine attribute set, you can override the defaults on Mac [if you know what you are doing ;)] as such:</p>
+
+<pre><code>   defaults write com.apple.LaunchServices LSQuarantine -bool NO
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -533,55 +624,6 @@ svn: Network connection closed unexpectedly
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/03/12/mysql-effects-on-views-from-changes-to-table-structure/">MYSQL Effects on Views From Changes to Table Structure</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2012-03-12T15:23:00-04:00" pubdate data-updated="true">Mar 12<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Au contraire, there are <strong>no</strong> effects of changing a table’s structure on a dependent view in MySQL! I’ve heard that other databases like Oracle automatically pick up changes on the table’s structure, but in MySQL the view is frozen upon creation.</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='sql'><span class='line'><span class="k">CREATE</span> <span class="k">VIEW</span> <span class="n">my_view</span> <span class="k">AS</span> <span class="k">SELECT</span> <span class="o">*</span> <span class="k">from</span> <span class="n">my_table</span><span class="p">;</span>
-</span><span class='line'><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="n">my_table</span> <span class="k">ADD</span> <span class="k">COLUMN</span> <span class="n">my_new_column</span> <span class="o">&lt;</span><span class="k">data</span> <span class="k">and</span> <span class="k">constraints</span><span class="o">&gt;</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2012/03/12/mysql-effects-on-views-from-changes-to-table-structure/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/2/">&larr; Older</a>
@@ -597,6 +639,10 @@ svn: Network connection closed unexpectedly
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/03/08/extended-file-attributes/">Extended File Attributes</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/02/19/git-branches-local/">Git Branches - Local</a>
       </li>
     
@@ -610,10 +656,6 @@ svn: Network connection closed unexpectedly
     
       <li class="post">
         <a href="/blog/2012/10/05/pdsh-parallel-distributed-shell/">PDSH - Parallel Distributed SHell</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/10/03/cname-vs-a-record/">CNAME Vs. A Record</a>
       </li>
     
   </ul>
@@ -640,7 +682,7 @@ svn: Network connection closed unexpectedly
 
 
 <section>
-    <span id="category-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#ffffff' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x0&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fbranch%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ebranch%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdatabase%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edatabase%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdate%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Edate%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdns%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edns%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdomain%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edomain%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fflyway%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eflyway%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fgit%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Egit%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fhostgator%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ehostgator%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ejava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fjavascript%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ejavascript%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmac%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emac%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmigration%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emigration%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmysql%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emysql%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fnslookup%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Enslookup%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fpdsh%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Epdsh%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fsql%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Esql%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fssh%27+style%3D%27font-size%3A+50.0%25%27%3Essh%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fssh-keys%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Essh-keys%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fsvn%27+style%3D%27font-size%3A+50.0%25%27%3Esvn%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftesting%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Etesting%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftime%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Etime%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftweaks%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Etweaks%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fwatir%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Ewatir%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fwhois%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ewhois%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fxpath%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Expath%3C%2Fa%3E+%3C%2Ftags%3E"></span>
+    <span id="category-cloud"><embed type='application/x-shockwave-flash' src='/javascripts/tagcloud.swf'width='100%' height='250' bgcolor='#ffffff' id='tagcloudflash' name='tagcloudflash' quality='high' allowscriptaccess='always'flashvars="tcolor=0x333333&amp;tcolor2=0x333333&amp;hicolor=0x0&amp;tspeed=100&amp;distr=true&amp;mode=tags&amp;tagcloud=%3Ctags%3E%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fbranch%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ebranch%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdatabase%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edatabase%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdate%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Edate%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdns%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edns%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fdomain%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Edomain%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fflyway%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eflyway%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fgit%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Egit%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fhostgator%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ehostgator%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fjava%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ejava%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fjavascript%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ejavascript%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmac%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Emac%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmigration%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emigration%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fmysql%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Emysql%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fnslookup%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Enslookup%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fpdsh%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Epdsh%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fsql%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Esql%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fssh%27+style%3D%27font-size%3A+50.0%25%27%3Essh%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fssh-keys%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Essh-keys%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fsvn%27+style%3D%27font-size%3A+50.0%25%27%3Esvn%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftesting%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Etesting%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftime%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Etime%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Ftweaks%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Etweaks%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Funix%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Eunix%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fwatir%27+style%3D%27font-size%3A+36.66666666666667%25%27%3Ewatir%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fwhois%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Ewhois%3C%2Fa%3E+%3Ca+href%3D%27http%3A%2F%2Fushaguduri.com%2Fblog%2Fcategories%2Fxpath%27+style%3D%27font-size%3A+23.333333333333336%25%27%3Expath%3C%2Fa%3E+%3C%2Ftags%3E"></span>
 </section>
 
   

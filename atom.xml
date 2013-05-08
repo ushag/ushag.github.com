@@ -4,7 +4,7 @@
   <title><![CDATA[Usha Guduri]]></title>
   <link href="http://ushaguduri.com/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-03-22T13:50:26-04:00</updated>
+  <updated>2013-05-08T12:53:40-04:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Extended File Attributes]]></title>
+    <link href="http://ushaguduri.com/blog/2013/03/08/extended-file-attributes/"/>
+    <updated>2013-03-08T12:04:00-05:00</updated>
+    <id>http://ushaguduri.com/blog/2013/03/08/extended-file-attributes</id>
+    <content type="html"><![CDATA[<p>The other day, a simple</p>
+
+<pre><code>ushaguduri@work:Wed Feb 20 15:40:17 -&gt; ls -al
+-rw-r--r--@ 1 ushaguduri  staff   899B Feb 20 15:26 test_file
+</code></pre>
+
+<p>got me digging deeper into the underlying File System. Notice the <strong>@</strong> after the file permissions?
+That&#8217;s a way to associate metadata with a file. Its not used by the file system for any useful purpose - just to store additional information, say like the source of the file, author etc.</p>
+
+<p>Bringing up the manual for the ls command describes the <strong>@</strong> as an available option too:</p>
+
+<pre><code> -@      Display extended attribute keys and sizes in long (-l) output.
+</code></pre>
+
+<p>Further digging leads to the <em>xattr</em> command and using it on the <em>test_file</em> above showed interesting data:</p>
+
+<pre><code>ushaguduri@work:Wed Feb 20 15:40:41 scripts(db5-v1-me) -&gt; xattr warmup_redis.rb
+com.apple.metadata:kMDItemWhereFroms
+com.apple.quarantine
+</code></pre>
+
+<p>The above two values in particular indicate:</p>
+
+<ol>
+<li><p><em>com.apple.metadata:kMDItemWhereFroms</em>: where the file was downloaded from along with a binary property list, if any</p></li>
+<li><p><em>com.apple.quarantine</em>: added by the OS the first time a file is downloaded(referring to the source of the download), so that it can ask for confirmation when the program is run (to stop malware by ensuring that the user is aware of a program wanting to execute). Once confirmed the attribute would be removed so that the program can run normally again without user confirmation.</p></li>
+</ol>
+
+
+<p><em>xattr</em> command takes several options to manipulate the metadata:</p>
+
+<pre><code>-l --&gt; list the actual values
+-d --&gt; delete the attribute
+-w --&gt; set the attribute
+</code></pre>
+
+<p>For example:</p>
+
+<pre><code>ushaguduri@work:Wed Feb 20 15:41:57 scripts(db5-v1-me) -&gt; xattr -l test_file
+com.apple.metadata:kMDItemWhereFroms:
+00000000  62 70 6C 69 73 74 30 30 A2 01 02 5F 10 4F 68 74  |bplist00..._.Oht|
+00000010  74 70 73 3A 2F 2F 74 69 63 6B 65 74 73 2E 73 6D  |tps://&lt;website url&gt;|
+.......
+000000A0  00 00 00 00 01 01 00 00 00 00 00 00 00 03 00 00  |................|
+000000B0  00 00 00 00 00 00 00 00 00 00 00 00 00 9B        |..............|
+000000be
+com.apple.quarantine: 0001;51253196;Google Chrome DEV.app;193F85B5-63F1-4A50-A83E-5713ED49D904|com.google.Chrome
+ushaguduri@work:Wed Feb 20 15:41:59 scripts(db5-v1-me) -&gt; xattr -w com.apple.metadata:kMDItemWhereFroms http://example.com test_file
+</code></pre>
+
+<p><strong>Bonus:</strong> If you dont want the quarantine attribute set, you can override the defaults on Mac [if you know what you are doing ;)] as such:</p>
+
+<pre><code>   defaults write com.apple.LaunchServices LSQuarantine -bool NO
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Git Branches - Local]]></title>
