@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: express | Usha Guduri]]></title>
+  <link href="http://ushaguduri.com/blog/categories/express/atom.xml" rel="self"/>
+  <link href="http://ushaguduri.com/"/>
+  <updated>2014-03-06T13:17:36-08:00</updated>
+  <id>http://ushaguduri.com/</id>
+  <author>
+    <name><![CDATA[Usha Guduri]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Grunt Tasks-RequireJs-Express Middleware]]></title>
+    <link href="http://ushaguduri.com/blog/2013/11/20/grunt-tasks-requirejs-express-middleware/"/>
+    <updated>2013-11-20T21:18:00-08:00</updated>
+    <id>http://ushaguduri.com/blog/2013/11/20/grunt-tasks-requirejs-express-middleware</id>
+    <content type="html"><![CDATA[<p>Starting on a new application is always more</p>
+]]></content>
+  </entry>
+  
+</feed>

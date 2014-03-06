@@ -4,7 +4,7 @@
   <title><![CDATA[Category: unix | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/unix/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-05-08T15:23:26-04:00</updated>
+  <updated>2014-03-06T13:17:36-08:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Unix in Simple English: whatis-whereis-locate-which]]></title>
     <link href="http://ushaguduri.com/blog/2013/03/12/whatis-whereis-locate-which/"/>
-    <updated>2013-03-12T13:04:00-04:00</updated>
+    <updated>2013-03-12T13:04:00-07:00</updated>
     <id>http://ushaguduri.com/blog/2013/03/12/whatis-whereis-locate-which</id>
     <content type="html"><![CDATA[<p>Each application/program over time, as it evolves (hopefully for the better!), is released in several versions. Ever wondered which version is being used or where/what all the versions installed are?
 Its quite easy with just using simple english in unix!</p>
@@ -72,7 +72,7 @@ ruby(1)                  - Interpreted object-oriented scripting language
   <entry>
     <title type="html"><![CDATA[Extended File Attributes]]></title>
     <link href="http://ushaguduri.com/blog/2013/03/08/extended-file-attributes/"/>
-    <updated>2013-03-08T12:04:00-05:00</updated>
+    <updated>2013-03-08T12:04:00-08:00</updated>
     <id>http://ushaguduri.com/blog/2013/03/08/extended-file-attributes</id>
     <content type="html"><![CDATA[<p>The other day, a simple</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: branch | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/branch/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-05-08T15:23:26-04:00</updated>
+  <updated>2014-03-06T13:17:36-08:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Git Branches - Local]]></title>
     <link href="http://ushaguduri.com/blog/2013/02/19/git-branches-local/"/>
-    <updated>2013-02-19T20:23:00-05:00</updated>
+    <updated>2013-02-19T20:23:00-08:00</updated>
     <id>http://ushaguduri.com/blog/2013/02/19/git-branches-local</id>
     <content type="html"><![CDATA[<p>Once you clone a Git repository, you are highly unlikely to work on the <em>master</em> unless you are a Maverick! The immediate thing you will look out for is branching - whether it is to add new features or even fix your bugs before pushing them live (Do you do 'Test Driven Development', by the way? :-D ). And Git is a great tool in this realm because branches are really really cheap - both in terms of memory and time (when switching between branches)</p>
 

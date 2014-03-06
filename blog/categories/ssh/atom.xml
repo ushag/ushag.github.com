@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ssh | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/ssh/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-05-08T15:23:26-04:00</updated>
+  <updated>2014-03-06T13:17:36-08:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[PDSH - Parallel Distributed SHell]]></title>
     <link href="http://ushaguduri.com/blog/2012/10/05/pdsh-parallel-distributed-shell/"/>
-    <updated>2012-10-05T14:35:00-04:00</updated>
+    <updated>2012-10-05T14:35:00-07:00</updated>
     <id>http://ushaguduri.com/blog/2012/10/05/pdsh-parallel-distributed-shell</id>
     <content type="html"><![CDATA[<p>Unless your application is a serving such a small traffic or is in the Beta stage, you are probably working with a load-balanced set of servers - web/application/database - you name it. And when there is an issue, the task of looking at the logs on each of the servers is a nightmare!</p>
 
@@ -48,7 +48,7 @@ $ pdsh -R ssh -w user@host[1-8].full.name “date”
   <entry>
     <title type="html"><![CDATA[SSH Access to the Hosting server]]></title>
     <link href="http://ushaguduri.com/blog/2012/10/02/ssh-access-to-the-hosting-server/"/>
-    <updated>2012-10-02T14:25:00-04:00</updated>
+    <updated>2012-10-02T14:25:00-07:00</updated>
     <id>http://ushaguduri.com/blog/2012/10/02/ssh-access-to-the-hosting-server</id>
     <content type="html"><![CDATA[<p>This section depends more on what style you are comfortable with: point-and-click or the get-dirty-with-the-command-line. I belong to the 2nd class and feel so lost without access to the bare bone shell (which I immediately customize with aliases/shell functions/shortcuts etc). This can be a discussion in its own right.</p>
 
@@ -85,7 +85,7 @@ drwx———  2 username groupname 4096 Sep 30 17:26 ./
   <entry>
     <title type="html"><![CDATA[SVN+SSH: network connection closed unexpectedly]]></title>
     <link href="http://ushaguduri.com/blog/2012/03/13/svn-plus-ssh-network-connection-closed-unexpectedly/"/>
-    <updated>2012-03-13T15:27:00-04:00</updated>
+    <updated>2012-03-13T15:27:00-07:00</updated>
     <id>http://ushaguduri.com/blog/2012/03/13/svn-plus-ssh-network-connection-closed-unexpectedly</id>
     <content type="html"><![CDATA[<p>After a long time, I had to work-from-home today because I hurt my shoulder badly. And something with the firewall and/or VPN settings seems to have changed that I couldn’t access the code base anymore. What more can you ask for WFH ;-)</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: svn | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/svn/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-05-08T15:23:26-04:00</updated>
+  <updated>2014-03-06T13:17:36-08:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Getting into the Git Land-via SVN]]></title>
     <link href="http://ushaguduri.com/blog/2012/11/12/getting-into-the-git-land-via-svn/"/>
-    <updated>2012-11-12T14:15:00-05:00</updated>
+    <updated>2012-11-12T14:15:00-08:00</updated>
     <id>http://ushaguduri.com/blog/2012/11/12/getting-into-the-git-land-via-svn</id>
     <content type="html"><![CDATA[<p>All the cool kids use git these days but shifting gears for your way-way-back-then-started repo into git is an intimidating task, let alone scaring the entire team while everyone is busy getting their stuff done.</p>
 
@@ -66,7 +66,7 @@ to push changes to the svn repo. and there you go-you made your first commit to 
   <entry>
     <title type="html"><![CDATA[SVN Delete - an oops moment!]]></title>
     <link href="http://ushaguduri.com/blog/2012/03/14/svn-delete-an-oops-moment/"/>
-    <updated>2012-03-14T15:48:00-04:00</updated>
+    <updated>2012-03-14T15:48:00-07:00</updated>
     <id>http://ushaguduri.com/blog/2012/03/14/svn-delete-an-oops-moment</id>
     <content type="html"><![CDATA[<p>And how many times did you accidentally delete files from svn repo - be it because you were copying and instead moved, typo’d and deleted 1 file instead of another or for whatever reason?!</p>
 
@@ -106,7 +106,7 @@ r99 | me | last known valid change
   <entry>
     <title type="html"><![CDATA[SVN+SSH: network connection closed unexpectedly]]></title>
     <link href="http://ushaguduri.com/blog/2012/03/13/svn-plus-ssh-network-connection-closed-unexpectedly/"/>
-    <updated>2012-03-13T15:27:00-04:00</updated>
+    <updated>2012-03-13T15:27:00-07:00</updated>
     <id>http://ushaguduri.com/blog/2012/03/13/svn-plus-ssh-network-connection-closed-unexpectedly</id>
     <content type="html"><![CDATA[<p>After a long time, I had to work-from-home today because I hurt my shoulder badly. And something with the firewall and/or VPN settings seems to have changed that I couldn’t access the code base anymore. What more can you ask for WFH ;-)</p>
 

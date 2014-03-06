@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mysql | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/mysql/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-05-08T15:23:26-04:00</updated>
+  <updated>2014-03-06T13:17:36-08:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[MYSQL Effects on Views from Changes to Table Structure]]></title>
     <link href="http://ushaguduri.com/blog/2012/03/12/mysql-effects-on-views-from-changes-to-table-structure/"/>
-    <updated>2012-03-12T15:23:00-04:00</updated>
+    <updated>2012-03-12T15:23:00-07:00</updated>
     <id>http://ushaguduri.com/blog/2012/03/12/mysql-effects-on-views-from-changes-to-table-structure</id>
     <content type="html"><![CDATA[<p>Au contraire, there are <strong>no</strong> effects of changing a table’s structure on a dependent view in MySQL! I’ve heard that other databases like Oracle automatically pick up changes on the table’s structure, but in MySQL the view is frozen upon creation.
 <code>sql

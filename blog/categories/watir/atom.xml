@@ -4,7 +4,7 @@
   <title><![CDATA[Category: watir | Usha Guduri]]></title>
   <link href="http://ushaguduri.com/blog/categories/watir/atom.xml" rel="self"/>
   <link href="http://ushaguduri.com/"/>
-  <updated>2013-05-08T15:23:26-04:00</updated>
+  <updated>2014-03-06T13:17:36-08:00</updated>
   <id>http://ushaguduri.com/</id>
   <author>
     <name><![CDATA[Usha Guduri]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Advanced Watir Use]]></title>
     <link href="http://ushaguduri.com/blog/2012/02/29/advanced-watir-use/"/>
-    <updated>2012-02-29T16:17:00-05:00</updated>
+    <updated>2012-02-29T16:17:00-08:00</updated>
     <id>http://ushaguduri.com/blog/2012/02/29/advanced-watir-use</id>
     <content type="html"><![CDATA[<p>...if you want to call hacking Watir to work with certain “advanced” UI elements that!</p>
 
@@ -54,7 +54,7 @@ browser.execute_script “&lt;all the above js&gt;”
   <entry>
     <title type="html"><![CDATA[Finding Watir Elements with XPATH]]></title>
     <link href="http://ushaguduri.com/blog/2012/02/24/finding-watir-elements-with-xpath/"/>
-    <updated>2012-02-24T16:10:00-05:00</updated>
+    <updated>2012-02-24T16:10:00-08:00</updated>
     <id>http://ushaguduri.com/blog/2012/02/24/finding-watir-elements-with-xpath</id>
     <content type="html"><![CDATA[<p>We recently got into automated ui testing with watir.</p>
 
