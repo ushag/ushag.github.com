@@ -26,3 +26,29 @@ content: " ";
 clear: both;
 height: 0;
 }
+
+.textButton {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-radius: 9999px;
+    padding: .75rem 1.75rem;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    width: 200px;
+    color: white;
+    text-decoration:none;
+    font-weight: bold;
+}
+a.textButton:visited {
+    color: white
+}
+.textButton:hover {
+    color: purple
+}
+.blueBackground {
+    --tw-bg-opacity: 1;
+    background-color: rgb(238 147 58 / var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+}
