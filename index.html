@@ -40,22 +40,24 @@
     clearOnHighlight  : true,
     OrderlyTyperDataAttr     : 'data-OrderlyTyper-targets',
     OrderlyTyperInterval     : 4000
-    }
+};
+    // Run the plugin on the desired element(s)
+    $('#my-typing-element').OrderlyTyper();
+});
+</script>
 
-  <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-N1X8N7XSL4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-N1X8N7XSL4');
 </script>
 
-
 </head>
 
-<body   >
+<body>
   <header role="banner"><hgroup>
   <h1><a href="/">Usha Guduri</a></h1>
 
@@ -108,7 +110,7 @@
 
   <h3>Hello there!</h3>
 
-     <span data-OrderlyTyper-targets="I've been a Full-Stack Developer,I've been a Scrum Master,I've been a Team Lead,I've been an Entrepreneur,I've been a Project Manager, I've been a Product Manager, I've been a Engineering Manager, I've been an Engineering Director">I'm an engineer</span>
+     <span id="my-typing-element" data-OrderlyTyper-targets="I've been a Full-Stack Developer,I've been a Scrum Master,I've been a Tech Lead, I've been a Team Lead,I've been an Entrepreneur,I've been a Project Manager, I've been a Product Manager, I've been an Engineering Manager, I've been an Engineering Director">I'm an engineer</span>
 
 <p></p>
 <p>At the end of the day... a visionary engineering leader... coming up with solutions for highly scalable and performance intensive complex systems. I excel at stabilizing teams, scaling operations, and bringing clarity to complex challenges.
